@@ -4,6 +4,7 @@ import MainAppBar from "./MainAppBar";
 import ParcelTable from "./ParcelTable";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./Home";
+import outOfStateParcels from './owner_out_of_state.json'
 
 function App() {
     return (
@@ -12,7 +13,7 @@ function App() {
             <Router>
                 <Switch>
                     <Route path="/out-of-state">
-                        <ParcelTable />
+                        <ParcelTable parcels={outOfStateParcels}/>
                     </Route>
                     <Route path="/out-of-omaha">
                         <ParcelTable />
