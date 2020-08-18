@@ -17,7 +17,8 @@ export default function MaterialTableDemo({parcels = []}) {
             columns={columns}
             data={parcels}
             options={{
-                pageSizeOptions: [10, 40, 100]
+                pageSizeOptions: [10, 40, 100],
+                emptyRowsWhenPaging: false,
             }
             }
         />
