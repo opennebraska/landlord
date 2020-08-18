@@ -13,10 +13,11 @@ export default function MaterialTableDemo({parcels = []}) {
 
     return (
         <MaterialTable
-            title="Editable Example"
+            title="Out of state landlords"
             columns={columns}
             data={parcels}
             options={{
+                pageSize: 10,
                 pageSizeOptions: [10, 40, 100],
                 emptyRowsWhenPaging: false,
             }
