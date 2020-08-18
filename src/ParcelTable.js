@@ -7,8 +7,8 @@ export default function MaterialTableDemo({parcels = []}) {
         {title: 'Owner Name', field: 'OWNER_NAME'},
         {title: 'Owner Address', field: 'ADDRESS2'},
         {title: 'Owner State', field: 'OWNER_STAT'},
-        {title: 'Property Address', field: 'ADDRESS_LA'},
-        {title: 'Property Zip', field: 'PROP_CITY'},
+        // eslint-disable-next-line react/display-name
+        {title: 'Property Address', render: rowData => <div>{`${rowData.ADDRESS_LA}, ${rowData.PROP_CITY}`}</div>},
     ]
 
     return (
