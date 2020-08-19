@@ -17,6 +17,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import MainRouter from "./MainRouter";
 
 const drawerWidth = 240;
 
@@ -161,6 +162,7 @@ export default function MainAppBar() {
         })}
       >
         <div className={classes.drawerHeader} />
+        <MainRouter />
       </main>
     </div>
   );
