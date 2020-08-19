@@ -14,7 +14,7 @@ export default function MainRouter() {
         <Route path="/out-of-omaha">
           <ParcelTable />
         </Route>
-        <Route path="/poor-condition">
+        <Route path="/low-condition">
           <ParcelTable />
         </Route>
         <Route path="/" exact={true}>

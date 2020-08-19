@@ -111,7 +111,7 @@ export default function MainAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            Landlords of Omaha
           </Typography>
         </Toolbar>
       </AppBar>
@@ -135,23 +135,12 @@ export default function MainAppBar() {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
+          {[{ text: "Out of city", link: "/out-of-city"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem, index) => (
+            <ListItem button key={menuItem.text} component={'a'} href={menuItem.link}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={menuItem.text} />
             </ListItem>
           ))}
         </List>
