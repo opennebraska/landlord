@@ -1,8 +1,0 @@
-import { parcelJson } from './parcels';
-
-// export const arcGisBaseUrl = `https://gis.dogis.org/arcgis/rest/services/OpenData_Layers/MapServer/38/query`;
-// export const outOfNebraskaUrl = arcGisBaseUrl + `?where=OWNER_STAT%3C%3E%27NE%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentOnly=false&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=pjson`;
-// export const outOfOmahaUrl = arcGisBaseUrl + `https://gis.dogis.org/arcgis/rest/services/OpenData_Layers/MapServer/38/query?where=OWNER_STAT%3D%27NE%27+AND+OWNER_CITY%3C%3E%27OMAHA%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=false&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentOnly=false&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=pjson`;
-
-
-export const outOfStateParcels = parcelJson.filter((value) => {return value['OWNER_STAT'] !== 'NE'}).slice(1, 10);
