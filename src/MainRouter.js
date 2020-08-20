@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ParcelTable from "./ParcelTable";
-import outOfStateParcels from "./owner_out_of_state.json";
 import { Home } from "./Home";
 import React from "react";
+import {outOfStateTableData} from "./OutOfStateTableData"
 
 export default function MainRouter() {
   return (
     <Router>
       <Switch>
         <Route path="/out-of-state">
-          <ParcelTable parcels={outOfStateParcels} />
+          <ParcelTable tableData={outOfStateTableData} />
         </Route>
         <Route path="/out-of-omaha">
           <ParcelTable />

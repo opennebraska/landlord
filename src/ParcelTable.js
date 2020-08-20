@@ -2,18 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
 
-export default function MaterialTableDemo({parcels = []}) {
-    const columns = [
-        {title: 'Owner Name', field: 'OWNER_NAME'},
-        {title: 'Owner Address', field: 'ADDRESS2'},
-        {title: 'Owner State', field: 'OWNER_STAT'},
-        // eslint-disable-next-line react/display-name
-        {title: 'Property Address', render: rowData => <div>{`${rowData.ADDRESS_LA}, ${rowData.PROP_CITY}`}</div>},
-    ]
+export default function MaterialTableDemo({tableData}) {
+    const { title, columns, parcels } = tableData;
 
     return (
         <MaterialTable
-            title="Out of state landlords"
+            title={title}
             columns={columns}
             data={parcels}
             options={{
@@ -26,5 +20,5 @@ export default function MaterialTableDemo({parcels = []}) {
     );
 }
 MaterialTableDemo.propTypes = {
-    parcels: PropTypes.array
+    tableData: PropTypes.object,
 };
