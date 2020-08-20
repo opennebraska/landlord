@@ -79,7 +79,6 @@ export default function MainAppBar() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const baseUrl = process.env.PUBLIC_URL;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -134,7 +133,7 @@ export default function MainAppBar() {
         <Divider />
         <List>
           {[{ text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
-            <ListItem button key={menuItem.text} component={'a'} href={baseUrl + menuItem.link}>
+            <ListItem button key={menuItem.text} component={'a'} href={menuItem.link}>
               <ListItemText primary={menuItem.text} />
             </ListItem>
           ))}
