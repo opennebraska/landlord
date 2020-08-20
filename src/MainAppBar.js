@@ -13,10 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import MainRouter from "./MainRouter";
 
 const drawerWidth = 240;
@@ -135,11 +132,8 @@ export default function MainAppBar() {
         </div>
         <Divider />
         <List>
-          {[{ text: "Out of city", link: "/out-of-city"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem, index) => (
+          {[{ text: "Out of city", link: "/out-of-city"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
             <ListItem button key={menuItem.text} component={'a'} href={menuItem.link}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
               <ListItemText primary={menuItem.text} />
             </ListItem>
           ))}
