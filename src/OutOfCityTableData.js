@@ -1,16 +1,16 @@
 import React from "react";
-import outOfStateParcels from "./owner_out_of_state.json";
+import outOfCityParcels from "./owner_in_state_out_of_city.json";
 
-export const outOfStateTableData = {
-    title: "Out of state landlords",
+export const outOfCityTableData = {
+    title: "Out of Omaha landlords",
     columns: [
         {title: 'Owner Name', field: 'OWNER_NAME'},
         {title: 'Owner Address', field: 'ADDRESS2'},
-        {title: 'Owner State', field: 'OWNER_STAT'},
+        {title: 'Owner City', field: 'OWNER_CITY'},
         // eslint-disable-next-line react/display-name
         {title: 'Property Address', render: rowData => <div>{`${rowData.ADDRESS_LA}, ${rowData.PROP_CITY}`}</div>},
         {title: 'Property Quality', field: 'QUALITY'},
         {title: 'Property Condition', field: 'CONDITION'},
     ],
-    parcels: outOfStateParcels,
+    parcels: outOfCityParcels,
 }

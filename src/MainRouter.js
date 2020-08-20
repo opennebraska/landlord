@@ -3,6 +3,7 @@ import ParcelTable from "./ParcelTable";
 import { Home } from "./Home";
 import React from "react";
 import {outOfStateTableData} from "./OutOfStateTableData"
+import {outOfCityTableData} from "./OutOfCityTableData";
 
 export default function MainRouter() {
   return (
@@ -12,7 +13,7 @@ export default function MainRouter() {
           <ParcelTable tableData={outOfStateTableData} />
         </Route>
         <Route path="/out-of-omaha">
-          <ParcelTable />
+          <ParcelTable tableData={outOfCityTableData} />
         </Route>
         <Route path="/low-condition">
           <ParcelTable />
