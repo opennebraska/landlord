@@ -8,7 +8,7 @@ import {lowConditionTableData} from "./LowConditionTableData";
 
 export default function MainRouter() {
   return (
-    <Router>
+    <Router basename="/landlord">
       <Switch>
         <Route path="/out-of-state">
           <ParcelTable tableData={outOfStateTableData} />
