@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import React from "react";
 import {outOfStateTableData} from "./OutOfStateTableData"
 import {outOfCityTableData} from "./OutOfCityTableData";
+import {lowConditionTableData} from "./LowConditionTableData";
 
 export default function MainRouter() {
   return (
@@ -16,7 +17,7 @@ export default function MainRouter() {
           <ParcelTable tableData={outOfCityTableData} />
         </Route>
         <Route path="/low-condition">
-          <ParcelTable />
+          <ParcelTable tableData={lowConditionTableData} />
         </Route>
         <Route path="/" exact={true}>
           <Home />
