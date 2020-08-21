@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import ParcelTable from "./ParcelTable";
 import { Home } from "./Home";
 import React from "react";
@@ -8,7 +8,7 @@ import {lowConditionTableData} from "./LowConditionTableData";
 
 export default function MainRouter() {
   return (
-    <Router basename="/landlord">
+    <Router>
       <Switch>
         <Route path="/out-of-state">
           <ParcelTable tableData={outOfStateTableData} />
