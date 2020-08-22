@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ParcelTable from "./ParcelTable";
-import { Home } from "./Home";
 import React from "react";
 import {outOfStateTableData} from "./OutOfStateTableData"
 import {outOfCityTableData} from "./OutOfCityTableData";
@@ -20,7 +19,7 @@ export default function MainRouter() {
           <ParcelTable tableData={lowConditionTableData} />
         </Route>
         <Route path="/" exact={true}>
-          <Home />
+          <ParcelTable tableData={lowConditionTableData} />
         </Route>
       </Switch>
     </Router>
