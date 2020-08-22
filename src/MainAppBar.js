@@ -132,10 +132,10 @@ export default function MainAppBar() {
         </div>
         <Divider />
         <List>
-          {[{ text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
+          {[{text: "Home", link: "/"}, { text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
             <ListItem button key={menuItem.text} component={'a'} href={menuItem.link}>
-              <ListItemText primary={menuItem.text} />
-            </ListItem>
+                <ListItemText primary={menuItem.text} />
+              </ListItem>
           ))}
         </List>
       </Drawer>
