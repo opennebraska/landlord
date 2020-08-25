@@ -12,9 +12,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import MainRouter from "./MainRouter";
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -75,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainAppBar() {
+export default function MainAppBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -133,9 +132,9 @@ export default function MainAppBar() {
         <Divider />
         <List>
           {[{text: "Home", link: "/"}, { text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
-            <ListItem button key={menuItem.text} component={'a'} href={menuItem.link}>
+            <Link button key={menuItem.text} to={menuItem.link}>
                 <ListItemText primary={menuItem.text} />
-              </ListItem>
+              </Link>
           ))}
         </List>
       </Drawer>
@@ -145,7 +144,8 @@ export default function MainAppBar() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <MainRouter />
+        {/* eslint-disable-next-line react/prop-types */}
+        {props.children}
       </main>
     </div>
   );
