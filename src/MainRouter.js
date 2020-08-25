@@ -8,7 +8,7 @@ import MainAppBar from "./MainAppBar";
 
 export default function MainRouter() {
     return (
-        <Router basename={"landlord"}>
+        <Router basename={process.env.BASE_PATH}>
             <Switch>
                 <Route path="/out-of-state">
                     <MainAppBar>
