@@ -13,7 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -131,10 +131,10 @@ export default function MainAppBar(props) {
         </div>
         <Divider />
         <List>
-          {[{text: "Home", link: "/"}, { text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
-            <Link key={menuItem.text} to={menuItem.link} style={{textDecoration: 'none', color: 'black'}}>
+          {[{text: "Home", link: "/", exact: true}, { text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
+            <NavLink key={menuItem.text} to={menuItem.link} style={{textDecoration: 'none', color: 'black'}} activeStyle={{color: 'blue'}} exact={menuItem.exact} >
                 <ListItemText primary={menuItem.text} style={{paddingLeft: '10px', paddingTop: '5px'}}/>
-              </Link>
+              </NavLink>
           ))}
         </List>
       </Drawer>
