@@ -1,6 +1,6 @@
 {
   "name": "landlord",
-  "homepage": "https://opennebraska.github.io/landlord",
+  "homepage": "https://opennebraska.github.io/landlord/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI= react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
