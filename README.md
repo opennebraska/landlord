@@ -5,6 +5,8 @@ http://opennebraska.github.io/landlord/
 Questions about this project can be directed to Jack Dunn <jack@prineb.org> ([Policy, Research & Innovation](http://prineb.org))
 
 Source data from [Douglas Country Nebraska Assessor / Register of Deeds](http://www.dcassessor.org/gis-mapping) GIS system.
+Specifically: [this link](https://gis.dogis.org/arcgis/rest/services/OpenData_Layers/MapServer/38/query?outFields=*&where=1%3D1)
+and then we chose JSON as the output format.
 
 ## Programmer Information:
 
