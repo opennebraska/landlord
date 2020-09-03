@@ -132,8 +132,8 @@ export default function MainAppBar(props) {
         <Divider />
         <List>
           {[{text: "Home", link: "/"}, { text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
-            <Link button key={menuItem.text} to={menuItem.link}>
-                <ListItemText primary={menuItem.text} />
+            <Link key={menuItem.text} to={menuItem.link} style={{textDecoration: 'none', color: 'black'}}>
+                <ListItemText primary={menuItem.text} style={{paddingLeft: '10px', paddingTop: '5px'}}/>
               </Link>
           ))}
         </List>
