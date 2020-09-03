@@ -1,3 +1,24 @@
+Web UI visualizing Douglas County Nebraska Parcels database.
+
+http://opennebraska.github.io/landlord/
+
+Questions about this project can be directed to Jack Dunn <jack@prineb.org> ([Policy, Research & Innovation](http://prineb.org))
+
+Source data from [Douglas Country Nebraska Assessor / Register of Deeds](http://www.dcassessor.org/gis-mapping) GIS system.
+
+## Programmer Information:
+
+This is a React (Javascript) stack hosted via github.io back-ending to a 189MB `parcels.js` file
+[hosted on Google Drive](https://drive.google.com/file/d/1b6LeSS8rUJG-ZTKIZz-b5BUuutZHuwbm/view?usp=sharing).
+
+Developer chat room (Slack): widwestdevchat.com #civic-hacking
+
+Task list, bug reports in [Github Issues](https://github.com/opennebraska/landlord/issues).
+
+---
+
+# Create React App Boilerplate
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
