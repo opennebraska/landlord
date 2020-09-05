@@ -7,10 +7,23 @@ console.log(`Start Loop Time: ${new Date().toString()}`)
 let totalNE = 0
 
 let data = []
-parcels.forEach((parcel) => {
-    const condition = parcel["CONDITION"];
+
+const isOwnersProperty = (parcel) => {
+    const propertyAddress = parcel.ADDRESS_LA;
+    const ownerAddress = parcel.ADDRESS2;
+    return propertyAddress === ownerAddress;
+}
+
+const includeInLowCondition = (parcel) => {
     const lowConditions = ["LOW", "WORN OUT", "POOR"];
-    if(lowConditions.includes(condition.toUpperCase())){
+    const parcelCondition = parcel["CONDITION"];
+    const hasLowCondition = lowConditions.includes(parcelCondition.toUpperCase());
+    const notOwnersProperty = !isOwnersProperty(parcel);
+    return hasLowCondition && notOwnersProperty;
+}
+
+parcels.forEach((parcel) => {
+    if(includeInLowCondition(parcel)){
         data.push(parcel);
     }
 })
