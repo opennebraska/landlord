@@ -22,8 +22,15 @@ const includeInLowCondition = (parcel) => {
     return hasLowCondition && notOwnersProperty;
 }
 
+const includeInOutOfOmaha = (parcel) => {
+    const ownerOutsideOmaha = parcel.OWNER_CITY.toUpperCase() !== "OMAHA";
+    const ownerFromNebraska = parcel.OWNER_STAT.toUpperCase() === "NE";
+    const propertyInsideOmaha = parcel.PROP_CITY.toUpperCase() === "OMAHA";
+    return ownerOutsideOmaha && ownerFromNebraska && propertyInsideOmaha;
+}
+
 parcels.forEach((parcel) => {
-    if(includeInLowCondition(parcel)){
+    if(includeInOutOfOmaha(parcel)){
         data.push(parcel);
     }
 })
