@@ -8,14 +8,16 @@ Source data from [Douglas Country Nebraska Assessor / Register of Deeds](http://
 Specifically: [this link](https://gis.dogis.org/arcgis/rest/services/OpenData_Layers/MapServer/38/query?outFields=*&where=1%3D1)
 and then we chose JSON as the output format.
 
+Task list, bug reports in [Github Issues](https://github.com/opennebraska/landlord/issues).
+
 ## Programmer Information:
 
 This is a React (Javascript) stack hosted via github.io back-ending to a 189MB `parcels.js` file
 [hosted on Google Drive](https://drive.google.com/file/d/1b6LeSS8rUJG-ZTKIZz-b5BUuutZHuwbm/view?usp=sharing).
+(It's actually trickier than that. We don't use that `parcels.js` file directly. We pull it into the local project
+and parse it into three smaller files.)
 
-Developer chat room (Slack): widwestdevchat.com #civic-hacking
-
-Task list, bug reports in [Github Issues](https://github.com/opennebraska/landlord/issues).
+Developer chat room (Slack): openne.slack.com #housing
 
 ---
 
