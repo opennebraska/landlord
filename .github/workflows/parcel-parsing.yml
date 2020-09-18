@@ -1,10 +1,10 @@
-name: "Cron job"
+name: "Parse parcels"
 on:
   schedule:
   - cron: "*/5 * * * *"
 
 jobs:
-  stale:
+  parse-parcels:
     runs-on: ubuntu-latest
     steps:
     - run: echo Hello, World!
