@@ -5,6 +5,7 @@ import {outOfStateTableData} from "./OutOfStateTableData"
 import {outOfCityTableData} from "./OutOfCityTableData";
 import {lowConditionTableData} from "./LowConditionTableData";
 import MainAppBar from "./MainAppBar";
+import {About} from "./About";
 
 export default function MainRouter() {
     return (
@@ -23,6 +24,11 @@ export default function MainRouter() {
                 <Route path="/low-condition">
                     <MainAppBar>
                         <ParcelTable tableData={lowConditionTableData}/>
+                    </MainAppBar>
+                </Route>
+                <Route path="/about">
+                    <MainAppBar>
+                        <About/>
                     </MainAppBar>
                 </Route>
                 <Route path="/" exact={true}>

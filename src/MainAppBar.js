@@ -131,7 +131,7 @@ export default function MainAppBar(props) {
         </div>
         <Divider />
         <List>
-          {[{text: "Home", link: "/", exact: true}, { text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }].map((menuItem) => (
+          {[{text: "Home", link: "/", exact: true}, { text: "Out of Omaha", link: "/out-of-omaha"}, { text: "Out of state", link: "/out-of-state" }, { text: "Low condition", link: "/low-condition" }, {text: "About", link: "/about"}].map((menuItem) => (
             <NavLink key={menuItem.text} to={menuItem.link} style={{textDecoration: 'none', color: 'black'}} activeStyle={{color: 'blue'}} exact={menuItem.exact} >
                 <ListItemText primary={menuItem.text} style={{paddingLeft: '10px', paddingTop: '5px'}}/>
               </NavLink>
