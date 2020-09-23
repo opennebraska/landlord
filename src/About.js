@@ -19,10 +19,10 @@ export function About() {
                 <Typography style={{fontWeight: 600}}>Out of Omaha: </Typography> Properties owned by people or companies located outside of Omaha
             </ListItem>
             <ListItem>
-                <Typography style={{fontWeight: 600}}>Out of state:</Typography> Omaha properties that are owned by people or companies located outside of Nebraska
+                <Typography style={{fontWeight: 600}}>Out of State:</Typography> Omaha properties that are owned by people or companies located outside of Nebraska
             </ListItem>
             <ListItem>
-                <Typography style={{fontWeight: 600}}>Low condition:</Typography> Omaha properties that are in Poor to Worn Out condition
+                <Typography style={{fontWeight: 600}}>Low Condition:</Typography> Omaha properties that are in Poor to Worn Out condition
             </ListItem>
         </List>
         <Typography>
