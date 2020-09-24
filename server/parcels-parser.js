@@ -44,7 +44,7 @@ async function parseAndWriteFiles(parcels) {
             lowPoorWornOutConditionParcels.push(parcel);
         }
     })
-    await fse.ensureDir('/src/data/');
+    await fse.ensureDir('./src/data/');
     await writeParcelsFile('./src/data/ownerOutOfNebraskaParcels.json', ownerOutOfNebraskaParcels);
     await writeParcelsFile('./src/data/ownerInNebraskaOutOfOmahaParcels.json', ownerInNebraskaOutOfOmahaParcels);
     await writeParcelsFile('./src/data/lowPoorWornOutConditionParcels.json', lowPoorWornOutConditionParcels);
