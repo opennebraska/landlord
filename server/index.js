@@ -1,7 +1,9 @@
 const parcelRetriever = require('./parcel-retriever');
-const parcelsWriter = require('./parcels-writer')
+const parcelsParser = require('./parcels-parser')
 
 parcelRetriever.retrieveParcels().then(parcelsRetrieved => {
     console.log(`Retrieved ${parcelsRetrieved.length} parcels.`);
-    parcelsWriter.write(parcelsRetrieved);
+    parcelsParser.parseAndWriteFiles(parcelsRetrieved).then(() => {
+        console.log('Finished writing files.')
+    });
 });
