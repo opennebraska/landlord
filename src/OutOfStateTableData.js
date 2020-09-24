@@ -1,5 +1,5 @@
 import React from "react";
-import outOfStateParcels from "./owner_out_of_state.json";
+import outOfStateParcels from "./data/ownerOutOfNebraskaParcels.json";
 
 export const outOfStateTableData = {
     title: "Out of state landlords",

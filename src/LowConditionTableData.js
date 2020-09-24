@@ -1,5 +1,5 @@
 import React from "react";
-import lowConditionParcels from "./low_condition_properties.json";
+import lowConditionParcels from "./data/lowPoorWornOutConditionParcels.json";
 
 export const lowConditionTableData = {
     title: "Low condition properties",
