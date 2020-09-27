@@ -23,7 +23,7 @@ jobs:
           git config --local user.email "snodgrass.ed@gmail.com"
           git config --local user.name "Ed Snodgrass"
           git add -A
-          git commit -m "Add changes" -a
+          git commit -m "Update parcel data from scheduled job" -a
           git pull
       - name: Push changes
         uses: ad-m/github-push-action@master
