@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
+import * as ReactGA from "react-ga";
 
 export default function MaterialTableDemo({tableData}) {
     const { title, columns, parcels } = tableData;
+
+    useEffect(() => ReactGA.pageview(window.location.pathname), []);
 
     return (
         <MaterialTable

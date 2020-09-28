@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Typography} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import * as ReactGA from "react-ga";
 
 export function About() {
+    useEffect(() => ReactGA.pageview('About'), []);
+
     return <React.Fragment>
         <Typography variant={'h2'}>About</Typography>
         <Typography>
