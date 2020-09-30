@@ -36,9 +36,9 @@ export default function MainRouter() {
                 </Route>
                 <Route path="/" exact={true}>
                     <MainAppBar>
+                        <ParcelTable tableData={lowConditionGroupedTableData}/>
                         <ParcelTable tableData={outOfNebraskaGroupedTableData}/>
                         <ParcelTable tableData={outOfCityGroupedTableData}/>
-                        <ParcelTable tableData={lowConditionGroupedTableData}/>
                     </MainAppBar>
                 </Route>
             </Switch>
