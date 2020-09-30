@@ -45,11 +45,11 @@ async function parseAndWriteFiles(parcels) {
         }
         if(includeInOutOfOmaha(parcel)){
             ownerInNebraskaOutOfOmahaParcels.push(parcel);
-            lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME]? lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME] += 1 : lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME] = 1;
+            ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME]? ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME] += 1 : ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME] = 1;
         }
         if(includeInLowCondition(parcel)){
             lowPoorWornOutConditionParcels.push(parcel);
-            ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME]? ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME] += 1 : ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME] = 1;
+            lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME]? lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME] += 1 : lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME] = 1;
         }
     })
 
@@ -60,13 +60,13 @@ async function parseAndWriteFiles(parcels) {
     });
 
     const lowPoorWornOutConditionGrouping = [];
-    Object.entries(ownerOutOfNebraskaGroupingCounts).forEach(entry => {
+    Object.entries(lowPoorWornOutConditionGroupingCounts).forEach(entry => {
         const [key, value] = entry;
         lowPoorWornOutConditionGrouping.push({ OWNER: key, PROPERTY_COUNT: value})
     });
 
     const ownerInNebraskaOutOfOmahaGrouping = [];
-    Object.entries(ownerOutOfNebraskaGroupingCounts).forEach(entry => {
+    Object.entries(ownerInNebraskaOutOfOmahaGroupingCounts).forEach(entry => {
         const [key, value] = entry;
         ownerInNebraskaOutOfOmahaGrouping.push({ OWNER: key, PROPERTY_COUNT: value})
     });
