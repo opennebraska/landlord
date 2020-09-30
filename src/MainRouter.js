@@ -6,6 +6,9 @@ import {outOfCityTableData} from "./OutOfCityTableData";
 import {lowConditionTableData} from "./LowConditionTableData";
 import MainAppBar from "./MainAppBar";
 import {About} from "./About";
+import {outOfNebraskaGroupedTableData} from "./OutOfStateGroupedTableData";
+import {outOfCityGroupedTableData} from "./OutOfCityGroupedTableData";
+import {lowConditionGroupedTableData} from "./LowConditionGroupedTableData";
 
 export default function MainRouter() {
     return (
@@ -33,7 +36,9 @@ export default function MainRouter() {
                 </Route>
                 <Route path="/" exact={true}>
                     <MainAppBar>
-                        <ParcelTable tableData={lowConditionTableData}/>
+                        <ParcelTable tableData={outOfNebraskaGroupedTableData}/>
+                        <ParcelTable tableData={outOfCityGroupedTableData}/>
+                        <ParcelTable tableData={lowConditionGroupedTableData}/>
                     </MainAppBar>
                 </Route>
             </Switch>
