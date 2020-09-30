@@ -30,24 +30,54 @@ const ownerOutOfState = (parcel) => {
 
 async function parseAndWriteFiles(parcels) {
     let ownerOutOfNebraskaParcels = [];
+    let ownerOutOfNebraskaGroupingCounts = {};
+
     let lowPoorWornOutConditionParcels = [];
+    let lowPoorWornOutConditionGroupingCounts = {};
+
     let ownerInNebraskaOutOfOmahaParcels = [];
+    let ownerInNebraskaOutOfOmahaGroupingCounts = {};
 
     parcels.forEach((parcel) => {
         if(ownerOutOfState(parcel)){
             ownerOutOfNebraskaParcels.push(parcel);
+            ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME]? ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME] += 1 : ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME] = 1;
         }
         if(includeInOutOfOmaha(parcel)){
             ownerInNebraskaOutOfOmahaParcels.push(parcel);
+            lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME]? lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME] += 1 : lowPoorWornOutConditionGroupingCounts[parcel.OWNER_NAME] = 1;
         }
         if(includeInLowCondition(parcel)){
             lowPoorWornOutConditionParcels.push(parcel);
+            ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME]? ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME] += 1 : ownerInNebraskaOutOfOmahaGroupingCounts[parcel.OWNER_NAME] = 1;
         }
     })
+
+    const ownerOutOfNebraskaGrouping = [];
+    Object.entries(ownerOutOfNebraskaGroupingCounts).forEach(entry => {
+        const [key, value] = entry;
+        ownerOutOfNebraskaGrouping.push({ OWNER: key, PROPERTY_COUNT: value})
+    });
+
+    const lowPoorWornOutConditionGrouping = [];
+    Object.entries(ownerOutOfNebraskaGroupingCounts).forEach(entry => {
+        const [key, value] = entry;
+        lowPoorWornOutConditionGrouping.push({ OWNER: key, PROPERTY_COUNT: value})
+    });
+
+    const ownerInNebraskaOutOfOmahaGrouping = [];
+    Object.entries(ownerOutOfNebraskaGroupingCounts).forEach(entry => {
+        const [key, value] = entry;
+        ownerInNebraskaOutOfOmahaGrouping.push({ OWNER: key, PROPERTY_COUNT: value})
+    });
+
     await fse.ensureDir('./src/data/');
     await writeParcelsFile('./src/data/ownerOutOfNebraskaParcels.json', ownerOutOfNebraskaParcels);
+    await writeParcelsFile('./src/data/ownerOutOfNebraskaGrouping.json', ownerOutOfNebraskaGrouping);
     await writeParcelsFile('./src/data/ownerInNebraskaOutOfOmahaParcels.json', ownerInNebraskaOutOfOmahaParcels);
+    await writeParcelsFile('./src/data/ownerInNebraskaOutOfOmahaGrouping.json', ownerInNebraskaOutOfOmahaGrouping);
     await writeParcelsFile('./src/data/lowPoorWornOutConditionParcels.json', lowPoorWornOutConditionParcels);
+    await writeParcelsFile('./src/data/lowPoorWornOutConditionGrouping.json', lowPoorWornOutConditionGrouping);
 }
 
 const writeParcelsFile = (fileName, parcels) => {
