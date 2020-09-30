@@ -45,6 +45,10 @@ export function About() {
             means just what you would expect.
         </Typography>
         <Typography>
+            Properties which do not display Property Quality or Property Condition are generally empty lots, parking
+            lots, tennis courts, etc.
+        </Typography>
+        <Typography>
             When sorting by STATE (owner state of residence), the abbreviation AE stands for U.S. Armed Forces –
             Europe.
         </Typography>
