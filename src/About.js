@@ -31,10 +31,20 @@ export function About() {
         <Typography>
             The table data is searchable. If you want to view only owners located in
             Omaha, simply enter omaha in the Search box by the upper right hand corner.
-            Any column can be sorted up or down. So you can sort by Owner Name or Owner Address or Owner City, etc. You
+            Any column can be sorted up or down.
+        </Typography>
+        <Typography>
+            So you can sort by Owner Name or Owner Address or Owner City, etc. You
             can even do this after you have created a view of, say - Owner City as Omaha – as in the previous paragraph.
-            Property Quality refers to the durability of the building when it was constructed. Property Condition
+        </Typography>
+        <Typography>
+            Property Quality refers to the durability of the building when it was constructed.
+        </Typography>
+        <Typography>
+            Property Condition
             means just what you would expect.
+        </Typography>
+        <Typography>
             When sorting by STATE (owner state of residence), the abbreviation AE stands for U.S. Armed Forces –
             Europe.
         </Typography>
