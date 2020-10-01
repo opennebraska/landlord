@@ -10,12 +10,12 @@ export function About() {
     return <React.Fragment>
         <Typography variant={'h2'}>About</Typography>
         <Typography>
-            Landlords of Omaha displays searchable data from the <a
-            href={"https://data-dogis.opendata.arcgis.com/datasets/parcels"}>Omaha/Douglas County GIS parcels
-            dataset</a> and was created by volunteers from Open Nebraska.
+            Landlords of Omaha displays searchable data from the 
+            <a href={"https://data-dogis.opendata.arcgis.com/datasets/parcels"}>Omaha/Douglas County GIS parcels dataset</a>
+            and was created by volunteers from Open/Nebraska with input from
+            <a href={"https://www.prineb.org/"}>Policy Research & Innovation</a>.
             There are three options for what you see on this website, which you can see by clicking on the three
-            little bars in the upper
-            left hand corner.
+            little bars in the upper left hand corner.
         </Typography>
         <List>
             <ListItem>
@@ -43,6 +43,10 @@ export function About() {
         <Typography>
             Property Condition
             means just what you would expect.
+        </Typography>
+        <Typography>
+            Properties which do not display Property Quality or Property Condition are generally empty lots, parking
+            lots, tennis courts, etc.
         </Typography>
         <Typography>
             When sorting by STATE (owner state of residence), the abbreviation AE stands for U.S. Armed Forces –
