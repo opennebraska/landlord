@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
 import * as ReactGA from "react-ga";
 
-export default function MaterialTableDemo({tableData}) {
+export default function MaterialTableDemo({tableData, search = true}) {
     const { title, columns, parcels } = tableData;
 
     useEffect(() => ReactGA.pageview(window.location.pathname), []);
@@ -19,6 +19,7 @@ export default function MaterialTableDemo({tableData}) {
                 emptyRowsWhenPaging: false,
                 rowStyle: { height: 75 },
                 exportButton: true,
+                search: search,
             }
             }
         />
@@ -26,4 +27,5 @@ export default function MaterialTableDemo({tableData}) {
 }
 MaterialTableDemo.propTypes = {
     tableData: PropTypes.object,
+    search: PropTypes.bool,
 };

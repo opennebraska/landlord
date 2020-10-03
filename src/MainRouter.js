@@ -9,6 +9,7 @@ import {About} from "./About";
 import {outOfNebraskaGroupedTableData} from "./OutOfStateGroupedTableData";
 import {outOfCityGroupedTableData} from "./OutOfCityGroupedTableData";
 import {lowConditionGroupedTableData} from "./LowConditionGroupedTableData";
+import Grid from "@material-ui/core/Grid";
 
 export default function MainRouter() {
     return (
@@ -36,9 +37,17 @@ export default function MainRouter() {
                 </Route>
                 <Route path="/" exact={true}>
                     <MainAppBar>
-                        <ParcelTable tableData={lowConditionGroupedTableData}/>
-                        <ParcelTable tableData={outOfNebraskaGroupedTableData}/>
-                        <ParcelTable tableData={outOfCityGroupedTableData}/>
+                        <Grid container spacing={2}>
+                            <Grid item xs={4}>
+                                <ParcelTable tableData={lowConditionGroupedTableData} search={false}/>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <ParcelTable tableData={outOfNebraskaGroupedTableData} search={false}/>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <ParcelTable tableData={outOfCityGroupedTableData} search={false}/>
+                            </Grid>
+                        </Grid>
                     </MainAppBar>
                 </Route>
             </Switch>
