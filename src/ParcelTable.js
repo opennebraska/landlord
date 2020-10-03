@@ -2,11 +2,14 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
 import * as ReactGA from "react-ga";
+const queryString = require('query-string');
 
-export default function MaterialTableDemo({tableData, search = true}) {
-    const { title, columns, parcels } = tableData;
+export default function MaterialTableDemo({tableData}) {
+    const { title, columns, parcels, action, search = false } = tableData;
 
     useEffect(() => ReactGA.pageview(window.location.pathname), []);
+
+    const searchText = queryString.parse(window.location.search)
 
     return (
         <MaterialTable
@@ -20,8 +23,9 @@ export default function MaterialTableDemo({tableData, search = true}) {
                 rowStyle: { height: 75 },
                 exportButton: true,
                 search: search,
-            }
-            }
+                searchText: searchText.search || ''
+            }}
+            actions={action}
         />
     );
 }

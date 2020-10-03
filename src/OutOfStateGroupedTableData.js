@@ -7,4 +7,9 @@ export const outOfNebraskaGroupedTableData = {
         {title: 'Number of Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc'},
     ],
     parcels: outOfNebraskaGroupedData,
+    action: [{
+        icon: 'search',
+            tooltip: 'See properties',
+            onClick: (event, rowData) => window.location.assign(`/out-of-state?search=${encodeURIComponent(rowData.OWNER)}`)
+        }],
 }
