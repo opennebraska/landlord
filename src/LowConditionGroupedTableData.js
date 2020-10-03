@@ -7,4 +7,9 @@ export const lowConditionGroupedTableData = {
         {title: 'Number of Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc'},
     ],
     parcels: lowConditionGroupedData,
+    action: [{
+        icon: 'search',
+        tooltip: 'See properties',
+        onClick: (event, rowData) => window.location.assign(`/low-condition?search=${encodeURIComponent(rowData.OWNER)}`)
+    }],
 }

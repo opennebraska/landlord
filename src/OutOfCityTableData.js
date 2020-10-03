@@ -12,4 +12,5 @@ export const outOfCityTableData = {
         {title: 'Property Condition', field: 'CONDITION'},
     ],
     parcels: outOfCityParcels,
+    search: true
 }

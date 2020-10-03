@@ -13,4 +13,5 @@ export const lowConditionTableData = {
         {title: 'Property Condition', field: 'CONDITION'},
     ],
     parcels: lowConditionParcels,
+    search: true
 }

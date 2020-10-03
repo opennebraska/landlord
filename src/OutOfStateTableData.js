@@ -12,4 +12,5 @@ export const outOfStateTableData = {
         {title: 'Property Condition', field: 'CONDITION'},
     ],
     parcels: outOfStateParcels,
+    search: true
 }
