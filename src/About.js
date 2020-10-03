@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Typography} from "@material-ui/core";
+import {Divider, Typography} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import * as ReactGA from "react-ga";
@@ -9,23 +9,24 @@ export function About() {
 
     return <React.Fragment>
         <Typography variant={'h2'}>About</Typography>
+        <Divider style={{marginBottom: '15px'}}/>
         <Typography>
-            Landlords of Omaha displays searchable data from the 
+            Landlords of Omaha displays searchable data from the{' '}
             <a href={"https://data-dogis.opendata.arcgis.com/datasets/parcels"}>Omaha/Douglas County GIS parcels dataset</a>
-            and was created by volunteers from Open/Nebraska with input from
-            <a href={"https://www.prineb.org/"}>Policy Research & Innovation</a>.
+            {' '}and was created by volunteers from Open/Nebraska with input from
+            {' '}<a href={"https://www.prineb.org/"}>Policy Research & Innovation</a>.
             There are three options for what you see on this website, which you can see by clicking on the three
             little bars in the upper left hand corner.
         </Typography>
         <List>
             <ListItem>
-                <Typography style={{fontWeight: 600}}>Out of Omaha: </Typography> Properties owned by people or companies located outside of Omaha
+                <Typography style={{fontWeight: 600}}>Out of Omaha:&nbsp;</Typography>Properties owned by people or companies located outside of Omaha
             </ListItem>
             <ListItem>
-                <Typography style={{fontWeight: 600}}>Out of State:</Typography> Omaha properties that are owned by people or companies located outside of Nebraska
+                <Typography style={{fontWeight: 600}}>Out of State:&nbsp;</Typography>Omaha properties that are owned by people or companies located outside of Nebraska
             </ListItem>
             <ListItem>
-                <Typography style={{fontWeight: 600}}>Low Condition:</Typography> Omaha properties that are in Poor to Worn Out condition
+                <Typography style={{fontWeight: 600}}>Low Condition:&nbsp;</Typography>Omaha properties that are in Poor to Worn Out condition
             </ListItem>
         </List>
         <Typography>
