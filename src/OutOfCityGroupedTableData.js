@@ -10,6 +10,6 @@ export const outOfCityGroupedTableData = {
     action: [{
         icon: 'search',
         tooltip: 'See properties',
-        onClick: (event, rowData) => window.location.assign(`/out-of-omaha?search=${encodeURIComponent(rowData.OWNER)}`)
+        onClick: (event, rowData) => window.location.assign(`/landlord/out-of-omaha?search=${encodeURIComponent(rowData.OWNER)}`)
     }],
 }

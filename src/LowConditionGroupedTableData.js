@@ -10,6 +10,6 @@ export const lowConditionGroupedTableData = {
     action: [{
         icon: 'search',
         tooltip: 'See properties',
-        onClick: (event, rowData) => window.location.assign(`/low-condition?search=${encodeURIComponent(rowData.OWNER)}`)
+        onClick: (event, rowData) => window.location.assign(`/landlord/low-condition?search=${encodeURIComponent(rowData.OWNER)}`)
     }],
 }
