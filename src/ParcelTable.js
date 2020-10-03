@@ -23,9 +23,15 @@ export default function MaterialTableDemo({tableData}) {
                 rowStyle: { height: 75 },
                 exportButton: true,
                 search: search,
-                searchText: searchText.search || ''
+                searchText: searchText.search || '',
+                actionsColumnIndex: -1
             }}
             actions={action}
+            localization={{
+                header: {
+                    actions: 'View'
+                }
+            }}
         />
     );
 }
