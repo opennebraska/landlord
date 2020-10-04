@@ -38,13 +38,13 @@ export default function MainRouter() {
                 <Route path="/" exact={true}>
                     <MainAppBar>
                         <Grid container spacing={2}>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} md={4}>
                                 <ParcelTable tableData={lowConditionGroupedTableData} search={false}/>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} md={4}>
                                 <ParcelTable tableData={outOfNebraskaGroupedTableData} search={false}/>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} md={4}>
                                 <ParcelTable tableData={outOfCityGroupedTableData} search={false}/>
                             </Grid>
                         </Grid>
