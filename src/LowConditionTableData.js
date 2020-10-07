@@ -1,16 +1,17 @@
 import lowConditionParcels from "./data/lowPoorWornOutConditionParcels.json";
+import {COLUMNS} from "./columns";
 
 export const lowConditionTableData = {
     title: "Low condition properties",
     columns: [
-        {title: 'Owner Name', field: 'OWNER_NAME'},
-        {title: 'Owner Address', field: 'ADDRESS2'},
-        {title: 'Owner City', field: 'OWNER_CITY'},
-        {title: 'Owner State', field: 'OWNER_STAT'},
-        {title: 'Property Address', field: 'ADDRESS_LA'},
-        {title: 'Property City', field: 'PROP_CITY'},
-        {title: 'Property Quality', field: 'QUALITY'},
-        {title: 'Property Condition', field: 'CONDITION'},
+      COLUMNS["OWNER_NAME"],
+      COLUMNS["ADDRESS2"],
+      COLUMNS["OWNER_CITY"],
+      COLUMNS["OWNER_STAT"],
+      COLUMNS["ADDRESS_LA"],
+      COLUMNS["PROP_CITY"],
+      COLUMNS["QUALITY"],
+      COLUMNS["CONDITION"],
     ],
     parcels: lowConditionParcels,
     search: true
