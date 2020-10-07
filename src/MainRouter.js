@@ -12,45 +12,37 @@ import {lowConditionGroupedTableData} from "./LowConditionGroupedTableData";
 import Grid from "@material-ui/core/Grid";
 
 export default function MainRouter() {
-    return (
-        <Router basename={"landlord"}>
-            <Switch>
-                <Route path="/out-of-state">
-                    <MainAppBar>
-                        <ParcelTable tableData={outOfStateTableData}/>
-                    </MainAppBar>
-                </Route>
-                <Route path="/out-of-omaha">
-                    <MainAppBar>
-                        <ParcelTable tableData={outOfCityTableData}/>
-                    </MainAppBar>
-                </Route>
-                <Route path="/low-condition">
-                    <MainAppBar>
-                        <ParcelTable tableData={lowConditionTableData}/>
-                    </MainAppBar>
-                </Route>
-                <Route path="/about">
-                    <MainAppBar>
-                        <About/>
-                    </MainAppBar>
-                </Route>
-                <Route path="/" exact={true}>
-                    <MainAppBar>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} md={4}>
-                                <ParcelTable tableData={lowConditionGroupedTableData} search={false}/>
-                            </Grid>
-                            <Grid item xs={12} md={4}>
-                                <ParcelTable tableData={outOfNebraskaGroupedTableData} search={false}/>
-                            </Grid>
-                            <Grid item xs={12} md={4}>
-                                <ParcelTable tableData={outOfCityGroupedTableData} search={false}/>
-                            </Grid>
-                        </Grid>
-                    </MainAppBar>
-                </Route>
-            </Switch>
-        </Router>
-    );
+  return (
+    <Router basename={"landlord"}>
+      <MainAppBar>
+        <Switch>
+          <Route path="/out-of-state">
+            <ParcelTable tableData={outOfStateTableData}/>
+          </Route>
+          <Route path="/out-of-omaha">
+            <ParcelTable tableData={outOfCityTableData}/>
+          </Route>
+          <Route path="/low-condition">
+            <ParcelTable tableData={lowConditionTableData}/>
+          </Route>
+          <Route path="/about">
+            <About/>
+          </Route>
+          <Route path="/" exact={true}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={4}>
+                <ParcelTable tableData={lowConditionGroupedTableData} search={false}/>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <ParcelTable tableData={outOfNebraskaGroupedTableData} search={false}/>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <ParcelTable tableData={outOfCityGroupedTableData} search={false}/>
+              </Grid>
+            </Grid>
+          </Route>
+        </Switch>
+      </MainAppBar>
+    </Router>
+  );
 }
