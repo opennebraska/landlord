@@ -30,3 +30,7 @@ jobs:
         with:
           branch: master
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy react app to github pages
+        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+        env:
+          CI: false
