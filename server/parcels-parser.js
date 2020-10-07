@@ -39,6 +39,9 @@ async function parseAndWriteFiles(parcels) {
     let ownerInNebraskaOutOfOmahaGroupingCounts = {};
 
     parcels.forEach((parcel) => {
+        if (parcel && parcel.ADDRESS1) {
+            parcel.ADDRESS2 = `${parcel.ADDRESS1}, ${parcel.ADDRESS2}`;
+        }
         if(ownerOutOfState(parcel)){
             ownerOutOfNebraskaParcels.push(parcel);
             ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME]? ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME] += 1 : ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME] = 1;
