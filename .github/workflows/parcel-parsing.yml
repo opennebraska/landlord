@@ -20,7 +20,7 @@ jobs:
           node server/index.js
       - name: Commit files
         run: |
-          git config --local user.email "snodgrass.ed@gmail.com"
+          git config --local user.email "edcrates@gmail.com"
           git config --local user.name "Ed Snodgrass"
           git add -A
           git commit -m "Update parcel data from scheduled job" -a
