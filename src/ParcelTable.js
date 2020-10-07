@@ -20,7 +20,6 @@ export default function MaterialTableDemo({tableData}) {
                 pageSize: 10,
                 pageSizeOptions: [10, 40, 100],
                 emptyRowsWhenPaging: false,
-                rowStyle: { height: 75 },
                 exportButton: true,
                 search: search,
                 searchText: searchText.search || '',
