@@ -28,7 +28,7 @@ const ownerOutOfState = (parcel) => {
     return !ownerFromNebraska && propertyInsideOmaha;
 }
 
-async function parseAndWriteFiles(parcels) {
+async function parseAndWriteFiles(parcels, violations) {
     let ownerOutOfNebraskaParcels = [];
     let ownerOutOfNebraskaGroupingCounts = {};
 
@@ -41,6 +41,7 @@ async function parseAndWriteFiles(parcels) {
     parcels.forEach((parcel) => {
         if (parcel && parcel.ADDRESS1) {
             parcel.ADDRESS2 = `${parcel.ADDRESS1}, ${parcel.ADDRESS2}`;
+            parcel.VIOLATION_LINKS = violations.filter(violations => violations.PIN === parcel.PIN).map(violations => violations.Link);
         }
         if(ownerOutOfState(parcel)){
             ownerOutOfNebraskaParcels.push(parcel);
