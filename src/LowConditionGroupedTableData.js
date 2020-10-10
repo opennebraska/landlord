@@ -4,7 +4,7 @@ export const lowConditionGroupedTableData = {
     title: "Low condition properties",
     columns: [
         {title: 'Owner Name', field: 'OWNER'},
-        {title: 'Number of Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc'},
+        {title: 'Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc', width: 100},
     ],
     parcels: lowConditionGroupedData,
     action: [{

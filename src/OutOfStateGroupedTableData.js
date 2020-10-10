@@ -4,7 +4,7 @@ export const outOfNebraskaGroupedTableData = {
     title: "Out of State properties",
     columns: [
         {title: 'Owner Name', field: 'OWNER'},
-        {title: 'Number of Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc'},
+        {title: 'Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc', width: 100},
     ],
     parcels: outOfNebraskaGroupedData,
     action: [{
