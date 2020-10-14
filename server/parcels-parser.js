@@ -43,6 +43,9 @@ async function parseAndWriteFiles(parcels, violations) {
             parcel.ADDRESS2 = `${parcel.ADDRESS1}, ${parcel.ADDRESS2}`;
             parcel.VIOLATION_LINKS = violations.filter(violations => violations.PIN === parcel.PIN).map(violations => violations.Link);
         }
+        if (parcel && parcel.APARTMENT && parcel.APARTMENT.trim()) {
+            parcel.PROPERTY_A = `${parcel.PROPERTY_A}, Apt. ${parcel.APARTMENT}`;
+        }
         if(ownerOutOfState(parcel)){
             ownerOutOfNebraskaParcels.push(parcel);
             ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME]? ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME] += 1 : ownerOutOfNebraskaGroupingCounts[parcel.OWNER_NAME] = 1;
