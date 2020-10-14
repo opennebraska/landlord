@@ -44,7 +44,7 @@ async function parseAndWriteFiles(parcels, violations) {
             parcel.VIOLATION_LINKS = violations.filter(violations => violations.PIN === parcel.PIN).map(violations => violations.Link);
         }
         if (parcel && parcel.APARTMENT && parcel.APARTMENT.trim()) {
-            parcel.PROPERTY_A = `${parcel.PROPERTY_A}, Apt. ${parcel.APARTMENT}`;
+            parcel.ADDRESS_LA = `${parcel.ADDRESS_LA}, Apt. ${parcel.APARTMENT}`;
         }
         if(ownerOutOfState(parcel)){
             ownerOutOfNebraskaParcels.push(parcel);
