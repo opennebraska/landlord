@@ -1,165 +1,143 @@
 import React from "react";
-import clsx from "clsx";
-import {makeStyles, useTheme} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItemText from "@material-ui/core/ListItemText";
-import {NavLink} from 'react-router-dom';
+import Hidden from '@material-ui/core/Hidden';
+import {Link} from "react-router-dom";
+import {Home, Info, LocationCity, Map, TrendingDown} from "@material-ui/icons";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
+    display: 'flex',
+  },
+  drawer: {
+    [theme.breakpoints.up('md')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
   },
   appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
-  hide: {
-    display: "none",
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
   },
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
-  },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
+    padding: theme.spacing(2),
   },
-  contentShift: {
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  listItemText: {
-    fontSize: '1.3rem'
-  }
 }));
 
 export default function MainAppBar(props) {
+  const {window} = props;
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const handleDrawerToggle = (variant) => {
+    setMobileOpen(variant === "temporary" && !mobileOpen);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <div className={classes.root}>
-      <CssBaseline/>
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon/>
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Landlords of Omaha
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon/>
-            ) : (
-              <ChevronRightIcon/>
-            )}
-          </IconButton>
-        </div>
+  const drawer = (variant) => (
+      <div>
+        <div className={classes.toolbar}/>
         <Divider/>
         <List>
-          {[{text: "Home", link: "/", exact: true},
-            {text: "Out of Omaha", link: "/out-of-omaha"},
-            {text: "Out of State", link: "/out-of-state"},
-            {text: "Low Condition", link: "/low-condition"},
-            {text: "About", link: "/about"}
+          {[{text: "Home", link: "/", icon: <Home/>},
+            {text: "Out of Omaha", link: "/out-of-omaha", icon: <LocationCity/>},
+            {text: "Out of State", link: "/out-of-state", icon: <Map/>},
+            {text: "Low Condition", link: "/low-condition", icon: <TrendingDown/>},
+            {text: "About", link: "/about", icon: <Info/>}
           ].map((menuItem) => (
-            <NavLink key={menuItem.text} to={menuItem.link}
-                     style={{textDecoration: 'none', color: 'black', width: '100%'}}
-                     activeStyle={{color: '#3f51b5'}} exact={menuItem.exact}>
-              <ListItem button>
-                <ListItemText classes={{primary: classes.listItemText}} primary={menuItem.text} style={{paddingLeft: '10px', paddingTop: '5px'}}/>
+              <ListItem button component={Link} to={menuItem.link} onClick={() => handleDrawerToggle(variant)} key={menuItem.link}>
+                <ListItemIcon>
+                  {menuItem.icon}
+                </ListItemIcon>
+                <ListItemText primary={menuItem.text}/>
               </ListItem>
-            </NavLink>
           ))}
         </List>
-      </Drawer>
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-        <div className={classes.drawerHeader}/>
-        {/* eslint-disable-next-line react/prop-types */}
-        {props.children}
-      </main>
-    </div>
+      </div>
+  );
+
+  const container = window !== undefined ? () => window().document.body : undefined;
+
+  return (
+      <div className={classes.root}>
+        <CssBaseline/>
+        <AppBar position="fixed" className={classes.appBar}>
+          <Toolbar>
+            <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={() => handleDrawerToggle("temporary")}
+                className={classes.menuButton}
+            >
+              <MenuIcon/>
+            </IconButton>
+            <Typography variant="h6" noWrap>
+              Landlords of Omaha
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <nav className={classes.drawer}>
+          <Hidden mdUp implementation="css">
+            <Drawer
+                container={container}
+                variant="temporary"
+                anchor="left"
+                open={mobileOpen}
+                onClose={() => handleDrawerToggle("temporary")}
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                ModalProps={{
+                  keepMounted: true, // Better open performance on mobile.
+                }}
+            >
+              {drawer("temporary")}
+            </Drawer>
+          </Hidden>
+          <Hidden smDown implementation="css">
+            <Drawer
+                classes={{
+                  paper: classes.drawerPaper,
+                }}
+                variant="permanent"
+                open
+            >
+              {drawer("permanent")}
+            </Drawer>
+          </Hidden>
+        </nav>
+        <main className={classes.content}>
+          <div className={classes.toolbar}/>
+          {/* eslint-disable-next-line react/prop-types */}
+          {props.children}
+        </main>
+      </div>
   );
 }
