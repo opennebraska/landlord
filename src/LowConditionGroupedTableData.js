@@ -7,9 +7,5 @@ export const lowConditionGroupedTableData = {
         {title: 'Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc', width: 100},
     ],
     parcels: lowConditionGroupedData,
-    action: [{
-        icon: 'search',
-        tooltip: 'See properties',
-        onClick: (event, rowData) => window.location.assign(`/landlord/low-condition?search=${encodeURIComponent(rowData.OWNER)}`)
-    }],
+    onRowClick: (event, rowData) => window.location.assign(`/landlord/low-condition?search=${encodeURIComponent(rowData.OWNER)}`)
 }
