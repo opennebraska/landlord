@@ -7,9 +7,5 @@ export const outOfCityGroupedTableData = {
         {title: 'Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc', width: 100},
     ],
     parcels: outOfCityGroupedData,
-    action: [{
-        icon: 'search',
-        tooltip: 'See properties',
-        onClick: (event, rowData) => window.location.assign(`/landlord/out-of-omaha?search=${encodeURIComponent(rowData.OWNER)}`)
-    }],
+    onRowClick: (event, rowData) => window.location.assign(`/landlord/out-of-omaha?search=${encodeURIComponent(rowData.OWNER)}`)
 }

@@ -5,7 +5,7 @@ import * as ReactGA from "react-ga";
 const queryString = require('query-string');
 
 export default function MaterialTableDemo({tableData}) {
-    const { title, columns, parcels, action, search = false } = tableData;
+    const { title, columns, parcels, onRowClick, search = false } = tableData;
 
     useEffect(() => ReactGA.pageview(window.location.pathname), []);
 
@@ -25,7 +25,7 @@ export default function MaterialTableDemo({tableData}) {
                 searchText: searchText.search || '',
                 actionsColumnIndex: -1
             }}
-            actions={action}
+            onRowClick={onRowClick}
             localization={{
                 header: {
                     actions: 'View'
