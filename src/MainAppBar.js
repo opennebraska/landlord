@@ -49,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(2),
   },
+  logo: {
+    maxWidth: 30,
+    marginRight: 10
+  }
 }));
 
 export default function MainAppBar(props) {
@@ -98,6 +102,7 @@ export default function MainAppBar(props) {
             >
               <MenuIcon/>
             </IconButton>
+            <img src="favicon.png" alt="logo" className={classes.logo} />
             <Typography variant="h6" noWrap>
               Landlords of Omaha
             </Typography>

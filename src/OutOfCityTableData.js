@@ -2,7 +2,7 @@ import outOfCityParcels from "./data/ownerInNebraskaOutOfOmahaParcels.json";
 import {COLUMNS} from "./columns";
 
 export const outOfCityTableData = {
-  title: "Out of Omaha landlords",
+  title: "Out of Omaha Landlords",
   columns: [
     COLUMNS["OWNER_NAME"],
     COLUMNS["ADDRESS2"],
