@@ -1,7 +1,7 @@
 import outOfCityGroupedData from "./data/ownerInNebraskaOutOfOmahaGrouping.json";
 
 export const outOfCityGroupedTableData = {
-    title: "Out of Omaha properties",
+    title: "Out of Omaha Landlord Properties",
     columns: [
         {title: 'Owner Name', field: 'OWNER'},
         {title: 'Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc', width: 100},

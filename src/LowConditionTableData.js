@@ -2,7 +2,7 @@ import lowConditionParcels from "./data/lowPoorWornOutConditionParcels.json";
 import {COLUMNS} from "./columns";
 
 export const lowConditionTableData = {
-    title: "Low condition properties",
+    title: "Low Condition Properties",
     columns: [
       COLUMNS["OWNER_NAME"],
       COLUMNS["ADDRESS2"],

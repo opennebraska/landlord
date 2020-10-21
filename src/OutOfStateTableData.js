@@ -2,7 +2,7 @@ import outOfStateParcels from "./data/ownerOutOfNebraskaParcels.json";
 import {COLUMNS} from "./columns";
 
 export const outOfStateTableData = {
-    title: "Out of state landlords",
+    title: "Out of State Landlords",
     columns: [
       COLUMNS["OWNER_NAME"],
       COLUMNS["ADDRESS2"],

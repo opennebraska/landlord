@@ -1,7 +1,7 @@
 import lowConditionGroupedData from './data/lowPoorWornOutConditionGrouping.json'
 
 export const lowConditionGroupedTableData = {
-    title: "Low condition properties",
+    title: "Low Condition Properties",
     columns: [
         {title: 'Owner Name', field: 'OWNER'},
         {title: 'Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc', width: 100},
