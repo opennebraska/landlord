@@ -4,6 +4,7 @@ import {COLUMNS} from "./columns";
 export const outOfCityTableData = {
   title: "Out of Omaha Landlords",
   columns: [
+    COLUMNS["PIN"],
     COLUMNS["OWNER_NAME"],
     COLUMNS["ADDRESS2"],
     COLUMNS["OWNER_CITY"],
@@ -13,5 +14,6 @@ export const outOfCityTableData = {
     COLUMNS["CONDITION"],
   ],
   parcels: outOfCityParcels,
-  search: true
+  search: true,
+  onRowClick: (event, rowData) => window.location.assign(`/landlord/out-of-omaha/property/${rowData.PIN}`)
 }

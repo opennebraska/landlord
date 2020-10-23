@@ -4,6 +4,7 @@ import {COLUMNS} from "./columns";
 export const outOfStateTableData = {
     title: "Out of State Landlords",
     columns: [
+      COLUMNS["PIN"],
       COLUMNS["OWNER_NAME"],
       COLUMNS["ADDRESS2"],
       COLUMNS["OWNER_STAT"],
@@ -13,5 +14,6 @@ export const outOfStateTableData = {
       COLUMNS["CONDITION"],
     ],
     parcels: outOfStateParcels,
-    search: true
+    search: true,
+    onRowClick: (event, rowData) => window.location.assign(`/landlord/out-of-state/property/${rowData.PIN}`)
 }

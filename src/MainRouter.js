@@ -10,12 +10,16 @@ import {outOfNebraskaGroupedTableData} from "./OutOfStateGroupedTableData";
 import {outOfCityGroupedTableData} from "./OutOfCityGroupedTableData";
 import {lowConditionGroupedTableData} from "./LowConditionGroupedTableData";
 import Grid from "@material-ui/core/Grid";
+import PropertyDetail from "./PropertyDetail";
 
 export default function MainRouter() {
   return (
     <Router basename={"landlord"}>
       <MainAppBar>
         <Switch>
+          <Route path="/:source/property/:pin">
+            <PropertyDetail />
+          </Route>
           <Route path="/out-of-state">
             <ParcelTable tableData={outOfStateTableData}/>
           </Route>
@@ -25,10 +29,10 @@ export default function MainRouter() {
           <Route path="/low-condition">
             <ParcelTable tableData={lowConditionTableData}/>
           </Route>
-          <Route path="/about">
+          <Route exact path="/about">
             <About/>
           </Route>
-          <Route path="/" exact={true}>
+          <Route path="/" exact>
             <Grid container spacing={2}>
               <Grid item xs={12} md={4}>
                 <ParcelTable tableData={lowConditionGroupedTableData} />
