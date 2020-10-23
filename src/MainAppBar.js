@@ -102,7 +102,7 @@ export default function MainAppBar(props) {
             >
               <MenuIcon/>
             </IconButton>
-            <img src="favicon.png" alt="logo" className={classes.logo} />
+            <img src="/landlord/favicon.png" alt="logo" className={classes.logo} />
             <Typography variant="h6" noWrap>
               Landlords of Omaha
             </Typography>

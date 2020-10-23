@@ -1,4 +1,5 @@
 export const COLUMNS = {
+  PIN: {title: 'Property ID', field: 'PIN', width: 150, hidden: true},
   PROP_CITY: {title: 'Property City', field: 'PROP_CITY', width: 150},
   OWNER_NAME: {title: 'Owner Name', field: 'OWNER_NAME'},
   ADDRESS2: {title: 'Owner Address', field: 'ADDRESS2'},
