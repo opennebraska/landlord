@@ -14,12 +14,16 @@ export default function PropertyDetail() {
 
   const {source, pin} = useParams();
   let selectedProperty = {};
+  let propertyCount = 0;
   if (source === "out-of-state") {
     selectedProperty = outOfNebraskaParcelsData.find(property => property.PIN === pin);
+    propertyCount = outOfNebraskaParcelsData.filter(property => property.OWNER_NAME === selectedProperty.OWNER_NAME).length;
   } else if (source === "out-of-omaha") {
     selectedProperty = outOfCityParcelsData.find(property => property.PIN === pin);
+    propertyCount = outOfCityParcelsData.filter(property => property.OWNER_NAME === selectedProperty.OWNER_NAME).length;
   } else if (source === "low-condition") {
     selectedProperty = lowConditionParcelsData.find(property => property.PIN === pin);
+    propertyCount = lowConditionParcelsData.filter(property => property.OWNER_NAME === selectedProperty.OWNER_NAME).length;
   }
 
   const encodedPropertyAddress = encodeURIComponent(`${selectedProperty.ADDRESS_LA}, ${selectedProperty.PROP_CITY}, NE ${selectedProperty.PROP_ZIP}`);
@@ -40,7 +44,7 @@ export default function PropertyDetail() {
               <Typography variant={"body1"} component={"p"}>{selectedProperty.OWNER_NAME}</Typography>
               <Typography variant={"body1"} component={"p"}>{selectedProperty.ADDRESS2}</Typography>
               <Typography variant={"body1"} component={"p"}>{selectedProperty.OWNER_CITY}, {selectedProperty.OWNER_STAT} {selectedProperty.OWNER_ZIP}</Typography>
-              <Typography variant={"body1"} component={"p"} gutterBottom><Link href={`/landlord/${source}?search=${encodeURIComponent(selectedProperty.OWNER_NAME)}`}>View All Properties</Link></Typography>
+              <Typography variant={"body1"} component={"p"} gutterBottom><Link href={`/landlord/${source}?search=${encodeURIComponent(selectedProperty.OWNER_NAME)}`}>{`View All ${propertyCount} Properties`}</Link></Typography>
             </Box>
             <Box>
               <Typography variant={"h4"} gutterBottom>Property</Typography>
