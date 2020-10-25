@@ -52,9 +52,10 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   contentWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh'
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    width: "100%"
   },
   content: {
     flexGrow: 1,
