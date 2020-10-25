@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import {makeStyles} from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -56,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MainAppBar(props) {
-  const {window} = props;
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -86,7 +86,6 @@ export default function MainAppBar(props) {
       </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
       <div className={classes.root}>
@@ -111,7 +110,6 @@ export default function MainAppBar(props) {
         <nav className={classes.drawer}>
           <Hidden mdUp implementation="css">
             <Drawer
-                container={container}
                 variant="temporary"
                 anchor="left"
                 open={mobileOpen}
@@ -140,9 +138,12 @@ export default function MainAppBar(props) {
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar}/>
-          {/* eslint-disable-next-line react/prop-types */}
           {props.children}
         </main>
       </div>
   );
+}
+
+MainAppBar.propTypes = {
+    children: PropTypes.node
 }
