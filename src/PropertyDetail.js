@@ -1,33 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import lowConditionParcelsData from './data/lowPoorWornOutConditionParcels.json'
-import outOfCityParcelsData from "./data/ownerInNebraskaOutOfOmahaParcels.json";
-import outOfNebraskaParcelsData from "./data/ownerOutOfNebraskaParcels.json";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import ReactGA from "react-ga";
+import lowConditionParcelsData from './data/lowPoorWornOutConditionParcels.json'
+import outOfCityParcelsData from "./data/ownerInNebraskaOutOfOmahaParcels.json";
+import outOfNebraskaParcelsData from "./data/ownerOutOfNebraskaParcels.json";
 
 export default function PropertyDetail() {
 
-  const {source, pin} = useParams();
-  let selectedProperty = {};
-  let propertyCount = 0;
-  if (source === "out-of-state") {
-    selectedProperty = outOfNebraskaParcelsData.find(property => property.PIN === pin);
-    propertyCount = outOfNebraskaParcelsData.filter(property => property.OWNER_NAME === selectedProperty.OWNER_NAME).length;
-  } else if (source === "out-of-omaha") {
-    selectedProperty = outOfCityParcelsData.find(property => property.PIN === pin);
-    propertyCount = outOfCityParcelsData.filter(property => property.OWNER_NAME === selectedProperty.OWNER_NAME).length;
-  } else if (source === "low-condition") {
-    selectedProperty = lowConditionParcelsData.find(property => property.PIN === pin);
-    propertyCount = lowConditionParcelsData.filter(property => property.OWNER_NAME === selectedProperty.OWNER_NAME).length;
-  }
+  const [selectedProperty, setSelectedProperty] = useState({QUALITY: "", CONDITION: ""});
+  const [propertyCount, setPropertyCount] = useState(0);
+  const [encodedPropertyAddress, setEncodedPropertyAddress] = useState("");
+  const [violationLinks, setViolationLinks] = useState([]);
 
-  const encodedPropertyAddress = encodeURIComponent(`${selectedProperty.ADDRESS_LA}, ${selectedProperty.PROP_CITY}, NE ${selectedProperty.PROP_ZIP}`);
-  const violationLinks = selectedProperty.VIOLATION_LINKS || [];
+  const {source, pin} = useParams();
+  useEffect(() => {
+    ReactGA.initialize('UA-175185008-1');
+    let parcelData;
+    if (source === "out-of-state") {
+      parcelData = outOfNebraskaParcelsData;
+    } else if (source === "out-of-omaha") {
+      parcelData = outOfCityParcelsData;
+    } else if (source === "low-condition") {
+      parcelData = lowConditionParcelsData;
+    }
+    const property = parcelData.find(propJson => propJson.PIN === pin);
+    setSelectedProperty(property);
+    setPropertyCount(parcelData.filter(propJson => propJson.OWNER_NAME === property.OWNER_NAME).length);
+    setEncodedPropertyAddress(encodeURIComponent(`${property.ADDRESS_LA}, ${property.PROP_CITY}, NE ${property.PROP_ZIP}`));
+    setViolationLinks(property.VIOLATION_LINKS || []);
+  }, [source, pin]);
 
   return (
       <>
@@ -53,7 +60,7 @@ export default function PropertyDetail() {
               <Typography variant={"body1"} component={"p"} gutterBottom><Link target="_blank" rel="noreferrer" href={`http://maps.google.com/?q=${encodedPropertyAddress}`}>View On Map</Link></Typography>
               <Typography variant={"h6"} gutterBottom>Condition/Quality</Typography>
               <Typography variant={"body1"} component={"p"}>Condition: {selectedProperty.CONDITION.trim() === "" ? 'Unknown' : selectedProperty.CONDITION}</Typography>
-              <Typography variant={"body1"} component={"p"} gutterBottom>Quality: {selectedProperty.QUALITY.trim() || 'Unknown'}</Typography>
+              <Typography variant={"body1"} component={"p"} gutterBottom>Quality: {selectedProperty.QUALITY.trim() === "" ? 'Unknown' : selectedProperty.QUALITY}</Typography>
               <Typography variant={"h6"} gutterBottom>Case Links:</Typography>
               {violationLinks.length > 0 && violationLinks.map(link => <Typography variant={"body"} component={"p"} gutterBottom><Link target="_blank" rel="noreferrer" href={`${link}`}>View Case</Link></Typography>)}
               {violationLinks.length === 0 && <Typography variant={"body1"} component={"p"}>No Cases</Typography>}
