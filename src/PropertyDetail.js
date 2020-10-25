@@ -55,7 +55,7 @@ export default function PropertyDetail() {
               <Typography variant={"body1"} component={"p"}>Condition: {selectedProperty.CONDITION.trim() === "" ? 'Unknown' : selectedProperty.CONDITION}</Typography>
               <Typography variant={"body1"} component={"p"} gutterBottom>Quality: {selectedProperty.QUALITY.trim() || 'Unknown'}</Typography>
               <Typography variant={"h6"} gutterBottom>Case Links:</Typography>
-              {violationLinks.length > 0 && violationLinks.map(link => <Typography variant={"body"} component={"p"} gutterBottom><Link target="_blank" rel="noreferrer" href={`${link}`}>View Case</Link></Typography>)}
+              {violationLinks.length > 0 && violationLinks.map(link => <Typography key={link} variant={"body"} component={"p"} gutterBottom><Link target="_blank" rel="noreferrer" href={`${link}`}>View Case</Link></Typography>)}
               {violationLinks.length === 0 && <Typography variant={"body1"} component={"p"}>No Cases</Typography>}
             </Box>
           </CardContent>
