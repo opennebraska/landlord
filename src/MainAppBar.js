@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
+import Box from "@material-ui/core/Box";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Typography from "@material-ui/core/Typography";
@@ -16,12 +17,16 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Hidden from '@material-ui/core/Hidden';
 import {Link} from "react-router-dom";
 import {Home, Info, LocationCity, Map, TrendingDown} from "@material-ui/icons";
+import { Icon } from '@iconify/react';
+import slackIcon from '@iconify/icons-mdi/slack';
+import githubIcon from '@iconify/icons-mdi/github';
+
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   drawer: {
     [theme.breakpoints.up('md')]: {
@@ -46,6 +51,11 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
   },
+  contentWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh'
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(2),
@@ -53,6 +63,29 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     maxWidth: 30,
     marginRight: 10
+  },
+  footer: {
+    bottom: 0,
+    marginTop: "auto",
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText
+  },
+  footerBody: {
+    padding: theme.spacing(2, 2),
+    textAlign: "center",
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText
+  },
+  footerCopyright: {
+    bottom: 0,
+    padding: theme.spacing(1, 0),
+    textAlign: "center",
+    marginTop: "auto",
+    backgroundColor: theme.palette.primary.dark,
+    color: theme.palette.primary.contrastText
+  },
+  footerLink: {
+    color: theme.palette.primary.contrastText
   }
 }));
 
@@ -101,7 +134,7 @@ export default function MainAppBar(props) {
             >
               <MenuIcon/>
             </IconButton>
-            <img src="/landlord/favicon.png" alt="logo" className={classes.logo} />
+            <img src="/landlord/favicon.png" alt="logo" className={classes.logo}/>
             <Typography variant="h6" noWrap>
               Landlords of Omaha
             </Typography>
@@ -136,10 +169,33 @@ export default function MainAppBar(props) {
             </Drawer>
           </Hidden>
         </nav>
-        <main className={classes.content}>
-          <div className={classes.toolbar}/>
-          {props.children}
-        </main>
+        <div className={classes.contentWrapper}>
+          <main className={classes.content}>
+            <div className={classes.toolbar}/>
+            {props.children}
+          </main>
+
+          <footer className={classes.footer}>
+            <div className={classes.footerBody}>
+              <Typography variant="body2" component="p">Learn more about this project:</Typography>
+              <Box display="flex" justifyContent="center">
+                <Box m={1} p={1}>
+                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://openne.slack.com/messages/housing"><Icon icon={slackIcon} width="36" height="36" /></a>
+                </Box>
+                <Box m={1} p={1}>
+                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://github.com/opennebraska/landlord"><Icon icon={githubIcon} width="36" height="36" /></a>
+                </Box>
+              </Box>
+            </div>
+            <div className={classes.footerCopyright}>
+              <Typography variant="body2">
+                {`Copyright © `}
+                <a className={classes.footerLink} href="https://www.codefornebraska.org/">Code for Nebraska</a>
+                {` ${new Date().getFullYear()}`}
+              </Typography>
+            </div>
+          </footer>
+        </div>
       </div>
   );
 }
