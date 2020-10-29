@@ -1,4 +1,5 @@
 const fse = require("fs-extra");
+const coordinateConverter = require('./coordinate-converter');
 
 const isOwnersProperty = (parcel) => {
     const propertyAddress = parcel.ADDRESS_LA;
@@ -45,6 +46,9 @@ async function parseAndWriteFiles(parcels, violations) {
         }
         if (parcel && parcel.APARTMENT && parcel.APARTMENT.trim()) {
             parcel.ADDRESS_LA = `${parcel.ADDRESS_LA}, Apt. ${parcel.APARTMENT}`;
+        }
+        if (parcel.X_COORD && parcel.Y_COORD) {
+            parcel.LAT_LONG = coordinateConverter.convertToLatLon(parcel.X_COORD, parcel.Y_COORD);
         }
         if(ownerOutOfState(parcel)){
             ownerOutOfNebraskaParcels.push(parcel);
