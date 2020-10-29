@@ -57,9 +57,9 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100vh",
     width: "100%"
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(2),
+  main: {
+    margin: theme.spacing(2),
+    height: "100%"
   },
   logo: {
     maxWidth: 30,
@@ -171,8 +171,8 @@ export default function MainAppBar(props) {
           </Hidden>
         </nav>
         <div className={classes.contentWrapper}>
-          <main className={classes.content}>
-            <div className={classes.toolbar}/>
+          <div className={classes.toolbar}/>
+          <main className={classes.main}>
             {props.children}
           </main>
 
