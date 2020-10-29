@@ -3,6 +3,9 @@ import lowConditionParcels from "./data/lowPoorWornOutConditionParcels.json";
 
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import PropTypes from "prop-types";
+import 'leaflet/dist/leaflet.css'; // sass
+import 'react-leaflet-markercluster/dist/styles.min.css'; // sass
+import MarkerClusterGroup from "react-leaflet-markercluster/src/react-leaflet-markercluster";
 
 export default class ParcelMap extends Component {
     constructor(props) {
@@ -23,6 +26,7 @@ export default class ParcelMap extends Component {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                 />
+                <MarkerClusterGroup>
                 {lowConditionParcels && lowConditionParcels.map(parcel => {
                     return (
                         <Marker position={[parcel.LAT_LONG.lat, parcel.LAT_LONG.long]} key={parcel.PIN}>
@@ -32,6 +36,7 @@ export default class ParcelMap extends Component {
                         </Marker>
                     )
                 })}
+                </MarkerClusterGroup>
             </Map>
         );
     }
