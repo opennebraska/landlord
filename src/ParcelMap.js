@@ -3,9 +3,7 @@ import lowConditionParcels from "./data/lowPoorWornOutConditionParcels.json";
 
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import PropTypes from "prop-types";
-import 'leaflet/dist/leaflet.css'; // sass
-import 'react-leaflet-markercluster/dist/styles.min.css'; // sass
-import MarkerClusterGroup from "react-leaflet-markercluster/src/react-leaflet-markercluster";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 export default class ParcelMap extends Component {
     constructor(props) {
