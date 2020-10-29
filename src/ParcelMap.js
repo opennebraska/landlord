@@ -12,10 +12,6 @@ const styles = {
   },
   popupContent: {
     fontSize: 12
-  },
-  map: {
-    width: "100%",
-    height: "100%"
   }
 };
 
@@ -33,7 +29,7 @@ class ParcelMap extends Component {
     const position = [this.state.lat, this.state.long]
     const {classes} = this.props;
     return (
-        <Map className={classes.map} center={position} zoom={this.state.zoom}>
+        <Map center={position} zoom={this.state.zoom}>
           <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
