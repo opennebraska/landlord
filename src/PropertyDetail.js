@@ -7,40 +7,30 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import ReactGA from "react-ga";
-import lowConditionParcelsData from './data/lowPoorWornOutConditionParcels.json'
-import outOfCityParcelsData from "./data/ownerInNebraskaOutOfOmahaParcels.json";
-import outOfNebraskaParcelsData from "./data/ownerOutOfNebraskaParcels.json";
+import PropTypes from "prop-types";
 
-export default function PropertyDetail() {
-
+export default function PropertyDetail(props) {
   const [selectedProperty, setSelectedProperty] = useState({QUALITY: "", CONDITION: ""});
   const [propertyCount, setPropertyCount] = useState(0);
   const [encodedPropertyAddress, setEncodedPropertyAddress] = useState("");
   const [violationLinks, setViolationLinks] = useState([]);
 
-  const {source, pin} = useParams();
+  const {pin} = useParams();
   useEffect(() => {
     ReactGA.pageview(window.location.pathname);
-    let parcelData;
-    if (source === "out-of-state") {
-      parcelData = outOfNebraskaParcelsData;
-    } else if (source === "out-of-omaha") {
-      parcelData = outOfCityParcelsData;
-    } else if (source === "low-condition") {
-      parcelData = lowConditionParcelsData;
-    }
+    const parcelData = props.parcels;
     const property = parcelData.find(propJson => propJson.PIN === pin);
     setSelectedProperty(property);
     setPropertyCount(parcelData.filter(propJson => propJson.OWNER_NAME === property.OWNER_NAME).length);
     setEncodedPropertyAddress(encodeURIComponent(`${property.ADDRESS_LA}, ${property.PROP_CITY}, NE ${property.PROP_ZIP}`));
     setViolationLinks(property.VIOLATION_LINKS || []);
-  }, [source, pin]);
+  }, [pin]);
 
   return (
       <>
         <Box mb={2}>
           <Breadcrumbs aria-label="breadcrumb" separator="›">
-            <Typography color="textPrimary"><Link href={`/landlord/${source}`}>{source}</Link></Typography>
+            <Typography color="textPrimary"><Link href={`/landlord/${props.source}`}>{props.source}</Link></Typography>
             <Typography color="textPrimary">{selectedProperty.OWNER_NAME}</Typography>
           </Breadcrumbs>
         </Box>
@@ -51,7 +41,7 @@ export default function PropertyDetail() {
               <Typography variant={"body1"} component={"p"}>{selectedProperty.OWNER_NAME}</Typography>
               <Typography variant={"body1"} component={"p"}>{selectedProperty.ADDRESS2}</Typography>
               <Typography variant={"body1"} component={"p"}>{selectedProperty.OWNER_CITY}, {selectedProperty.OWNER_STAT} {selectedProperty.OWNER_ZIP}</Typography>
-              <Typography variant={"body1"} component={"p"} gutterBottom><Link href={`/landlord/${source}?search=${encodeURIComponent(selectedProperty.OWNER_NAME)}`}>{`View All ${propertyCount} Properties`}</Link></Typography>
+              <Typography variant={"body1"} component={"p"} gutterBottom><Link href={`/landlord/${props.source}?search=${encodeURIComponent(selectedProperty.OWNER_NAME)}`}>{`View All ${propertyCount} Properties`}</Link></Typography>
             </Box>
             <Box>
               <Typography variant={"h4"} gutterBottom>Property</Typography>
@@ -70,3 +60,8 @@ export default function PropertyDetail() {
       </>
   );
 }
+
+PropertyDetail.propTypes = {
+  parcels: PropTypes.array.isRequired,
+  source: PropTypes.string.isRequired,
+};

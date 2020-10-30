@@ -16,11 +16,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ListItemText from "@material-ui/core/ListItemText";
 import Hidden from '@material-ui/core/Hidden';
 import {Link} from "react-router-dom";
-import {Home, Info, LocationCity, Map, TrendingDown} from "@material-ui/icons";
-import { Icon } from '@iconify/react';
+import {Home, Info, LocationCity, Map, Place, TrendingDown} from "@material-ui/icons";
+import {Icon} from '@iconify/react';
 import slackIcon from '@iconify/icons-mdi/slack';
 import githubIcon from '@iconify/icons-mdi/github';
-
 
 const drawerWidth = 240;
 
@@ -45,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -102,24 +104,52 @@ export default function MainAppBar(props) {
       <div>
         <div className={classes.toolbar}/>
         <Divider/>
-        <List>
-          {[{text: "Home", link: "/", icon: <Home/>},
-            {text: "Out of Omaha", link: "/out-of-omaha", icon: <LocationCity/>},
-            {text: "Out of State", link: "/out-of-state", icon: <Map/>},
-            {text: "Low Condition", link: "/low-condition", icon: <TrendingDown/>},
-            {text: "About", link: "/about", icon: <Info/>}
-          ].map((menuItem) => (
-              <ListItem button component={Link} to={menuItem.link} onClick={() => handleDrawerToggle(variant)} key={menuItem.link}>
-                <ListItemIcon>
-                  {menuItem.icon}
-                </ListItemIcon>
-                <ListItemText primary={menuItem.text}/>
-              </ListItem>
-          ))}
+        <List component="nav">
+          <ListItem button component={Link} to="/" onClick={() => handleDrawerToggle(variant)} key={"/"}>
+            <ListItemIcon><Home/></ListItemIcon>
+            <ListItemText primary="Home"/>
+          </ListItem>
+
+          <ListItem button component={Link} to="/out-of-omaha" onClick={() => handleDrawerToggle(variant)} key={"/out-of-omaha"}>
+            <ListItemIcon><LocationCity/></ListItemIcon>
+            <ListItemText primary="Out of Omaha"/>
+          </ListItem>
+          <List component="div" disablePadding dense>
+            <ListItem className={classes.nested} button component={Link} to="/out-of-omaha/map" onClick={() => handleDrawerToggle(variant)} key={"/out-of-omaha/map"}>
+              <ListItemIcon><Place/></ListItemIcon>
+              <ListItemText primary="Out of Omaha Map"/>
+            </ListItem>
+          </List>
+
+          <ListItem button component={Link} to="/out-of-state" onClick={() => handleDrawerToggle(variant)} key={"/out-of-state"}>
+            <ListItemIcon><Map/></ListItemIcon>
+            <ListItemText primary="Out of State"/>
+          </ListItem>
+          <List component="div" disablePadding dense>
+            <ListItem className={classes.nested} button component={Link} to="/out-of-state/map" onClick={() => handleDrawerToggle(variant)} key={"/out-of-state/map"}>
+              <ListItemIcon><Place/></ListItemIcon>
+              <ListItemText primary="Out of State Map"/>
+            </ListItem>
+          </List>
+
+          <ListItem button component={Link} to="/low-condition" onClick={() => handleDrawerToggle(variant)} key={"/low-condition"}>
+            <ListItemIcon><TrendingDown/></ListItemIcon>
+            <ListItemText primary="Low Condition"/>
+          </ListItem>
+          <List component="div" disablePadding dense>
+            <ListItem className={classes.nested} button component={Link} to="/low-condition/map" onClick={() => handleDrawerToggle(variant)} key={"/low-condition/map"}>
+              <ListItemIcon><Place/></ListItemIcon>
+              <ListItemText primary="Low Condition Map"/>
+            </ListItem>
+          </List>
+
+          <ListItem button component={Link} to="/about" onClick={() => handleDrawerToggle(variant)} key={"/about"}>
+            <ListItemIcon><Info/></ListItemIcon>
+            <ListItemText primary="About"/>
+          </ListItem>
         </List>
       </div>
   );
-
 
   return (
       <div className={classes.root}>
@@ -135,7 +165,7 @@ export default function MainAppBar(props) {
             >
               <MenuIcon/>
             </IconButton>
-            <img src="/landlord/favicon.png" alt="logo" className={classes.logo}/>
+            <img src="/landlord/favicon.png" alt="logo" className={classes.logo} width={30} height={30}/>
             <Typography variant="h6" noWrap>
               Landlords of Omaha
             </Typography>
@@ -181,10 +211,10 @@ export default function MainAppBar(props) {
               <Typography variant="body2" component="p">Learn more about this project:</Typography>
               <Box display="flex" justifyContent="center">
                 <Box m={1} p={1}>
-                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://openne.slack.com/messages/housing"><Icon icon={slackIcon} width="36" height="36" /></a>
+                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://openne.slack.com/messages/housing"><Icon icon={slackIcon} width="36" height="36"/></a>
                 </Box>
                 <Box m={1} p={1}>
-                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://github.com/opennebraska/landlord"><Icon icon={githubIcon} width="36" height="36" /></a>
+                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://github.com/opennebraska/landlord"><Icon icon={githubIcon} width="36" height="36"/></a>
                 </Box>
               </Box>
             </div>
@@ -202,5 +232,5 @@ export default function MainAppBar(props) {
 }
 
 MainAppBar.propTypes = {
-    children: PropTypes.node
+  children: PropTypes.node
 }

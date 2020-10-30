@@ -15,5 +15,5 @@ export const outOfCityTableData = {
   ],
   parcels: outOfCityParcels,
   search: true,
-  onRowClick: (event, rowData) => window.location.assign(`/landlord/out-of-omaha/property/${rowData.PIN}`)
+  onRowClick: (event, rowData) => window.location.assign(`/landlord/out-of-omaha/${rowData.PIN}`)
 }

@@ -16,5 +16,5 @@ export const lowConditionTableData = {
   ],
   parcels: lowConditionParcels,
   search: true,
-  onRowClick: (event, rowData) => window.location.assign(`/landlord/low-condition/property/${rowData.PIN}`)
+  onRowClick: (event, rowData) => window.location.assign(`/landlord/low-condition/${rowData.PIN}`)
 }

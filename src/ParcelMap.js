@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import lowConditionParcels from "./data/lowPoorWornOutConditionParcels.json";
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet';
 import PropTypes from "prop-types";
 import MarkerClusterGroup from "react-leaflet-markercluster";
@@ -21,13 +20,13 @@ class ParcelMap extends Component {
     this.state = {
       lat: 41.3148,
       long: -96.1951,
-      zoom: 11,
+      zoom: 11
     }
   }
 
   render() {
     const position = [this.state.lat, this.state.long]
-    const {classes} = this.props;
+    const {classes, parcels, source} = this.props;
     return (
         <Map center={position} zoom={this.state.zoom}>
           <TileLayer
@@ -35,13 +34,14 @@ class ParcelMap extends Component {
               attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
           <MarkerClusterGroup>
-            {lowConditionParcels && lowConditionParcels.map(parcel => {
+            {parcels.map(parcel => {
               return (
                   <Marker position={[parcel.LAT_LONG.lat, parcel.LAT_LONG.long]} key={parcel.PIN}>
                     <Popup>
                       <div className={classes.popupTitle}>{parcel.OWNER_NAME}</div>
                       <div className={classes.popupContent}>{parcel.ADDRESS_LA}</div>
                       <div className={classes.popupContent}>{parcel.PROP_CITY}, NE {parcel.PROP_ZIP}</div>
+                      <div className={classes.popupContent}><a href={`/landlord/${source}/${parcel.PIN}`} target="_blank" rel="noreferrer">Property Detail</a></div>
                     </Popup>
                   </Marker>
               )
@@ -54,7 +54,8 @@ class ParcelMap extends Component {
 
 ParcelMap.propTypes = {
   classes: PropTypes.object.isRequired,
-  parcels: PropTypes.array,
+  parcels: PropTypes.array.isRequired,
+  source: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(ParcelMap);
