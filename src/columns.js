@@ -8,5 +8,6 @@ export const COLUMNS = {
   QUALITY: {title: 'Property Quality', field: 'QUALITY', width: 100},
   CONDITION: {title: 'Property Condition', field: 'CONDITION', width: 100},
   PROPERTY_COUNT: {title: 'Number of Properties', field: 'PROPERTY_COUNT', defaultSort: 'desc'},
-  OWNER_STAT: {title: 'Owner State', field: 'OWNER_STAT'}
+  OWNER_STAT: {title: 'Owner State', field: 'OWNER_STAT'},
+  VIOLATION_COUNT: {title: 'Cases', field: 'VIOLATION_COUNT'}
 }

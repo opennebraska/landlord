@@ -13,6 +13,7 @@ export const lowConditionTableData = {
     COLUMNS["PROP_CITY"],
     COLUMNS["QUALITY"],
     COLUMNS["CONDITION"],
+    COLUMNS["VIOLATION_COUNT"],
   ],
   parcels: lowConditionParcels,
   search: true,

@@ -12,6 +12,7 @@ export const outOfCityTableData = {
     COLUMNS["PROP_CITY"],
     COLUMNS["QUALITY"],
     COLUMNS["CONDITION"],
+    COLUMNS["VIOLATION_COUNT"],
   ],
   parcels: outOfCityParcels,
   search: true,

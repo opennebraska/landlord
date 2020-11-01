@@ -12,6 +12,7 @@ export const outOfStateTableData = {
     COLUMNS["PROP_CITY"],
     COLUMNS["QUALITY"],
     COLUMNS["CONDITION"],
+    COLUMNS["VIOLATION_COUNT"],
   ],
   parcels: outOfStateParcels,
   search: true,
