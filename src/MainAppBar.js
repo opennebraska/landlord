@@ -221,7 +221,7 @@ export default function MainAppBar(props) {
             <div className={classes.footerCopyright}>
               <Typography variant="body2">
                 {`Copyright © `}
-                <a className={classes.footerLink} href="https://www.codefornebraska.org/">Code for Nebraska</a>
+                <a className={classes.footerLink}  rel="noreferrer" target="_blank" href="https://www.codefornebraska.org/">Code for Nebraska</a>
                 {` ${new Date().getFullYear()}`}
               </Typography>
             </div>
