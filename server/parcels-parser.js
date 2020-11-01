@@ -40,11 +40,11 @@ async function parseAndWriteFiles(parcels, violations) {
     let ownerInNebraskaOutOfOmahaGroupingCounts = {};
 
     parcels.forEach((parcel) => {
-        if (parcel && parcel.ADDRESS1) {
+        if (parcel.ADDRESS1 && parcel.ADDRESS1.trim()) {
             parcel.ADDRESS2 = `${parcel.ADDRESS1}, ${parcel.ADDRESS2}`;
             parcel.VIOLATION_LINKS = violations.filter(violations => violations.PIN === parcel.PIN).map(violations => violations.Link);
         }
-        if (parcel && parcel.APARTMENT && parcel.APARTMENT.trim()) {
+        if (parcel.APARTMENT && parcel.APARTMENT.trim()) {
             parcel.ADDRESS_LA = `${parcel.ADDRESS_LA}, Apt. ${parcel.APARTMENT}`;
         }
         if (parcel.X_COORD && parcel.Y_COORD) {
