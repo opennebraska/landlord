@@ -20,27 +20,32 @@ describe('includeInLowCondition test', () => {
     });
     
     test('if condition is worn out and property is in Omaha and if its not owners property ', () => {
-        const actual= parcelsParser.includeInLowCondition({ADDRESS_LA : 'hello', ADDRESS2 : 'bye', CONDITION : 'WORN OUT', PROP_CITY : 'OMAHA', })
+        const parcel = {ADDRESS_LA : 'hello', ADDRESS2 : 'bye', CONDITION : 'WORN OUT', PROP_CITY : 'OMAHA', }
+        const actual= parcelsParser.includeInLowCondition(parcel)
         expect(actual).toBe(true);
     });
     
     test('if condition is poor and property is in Omaha and if its not owners property ', () => {
-        const actual= parcelsParser.includeInLowCondition({ADDRESS_LA : 'hello', ADDRESS2 : 'bye', CONDITION : 'POOR', PROP_CITY : 'OMAHA', })
+        const parcel = {ADDRESS_LA : 'hello', ADDRESS2 : 'bye', CONDITION : 'POOR', PROP_CITY : 'OMAHA', }
+        const actual= parcelsParser.includeInLowCondition(parcel)
         expect(actual).toBe(true);
     });
     
     test('if condition is low and property is not in Omaha and if its not owners property ', () => {
-        const actual= parcelsParser.includeInLowCondition({ADDRESS_LA : 'hello', ADDRESS2 : 'bye', CONDITION : 'LOW', PROP_CITY : 'Chicago', })
+        const parcel = {ADDRESS_LA : 'hello', ADDRESS2 : 'bye', CONDITION : 'LOW', PROP_CITY : 'Chicago', }
+        const actual= parcelsParser.includeInLowCondition(parcel)
         expect(actual).toBe(false);
     });
     
     test('if condition is worn out and property is in Omaha and if it is owners property ', () => {
-        const actual= parcelsParser.includeInLowCondition({ADDRESS_LA : 'hello', ADDRESS2 : 'hello', CONDITION : 'WORN OUT', PROP_CITY : 'OMAHA', })
+        const parcel = { ADDRESS_LA: 'hello', ADDRESS2: 'hello', CONDITION: 'WORN OUT', PROP_CITY: 'OMAHA', };
+        const actual= parcelsParser.includeInLowCondition(parcel)
         expect(actual).toBe(false);
     });
     
     test('if condition is good and property is in Omaha and if its not owners property ', () => {
-        const actual= parcelsParser.includeInLowCondition({ADDRESS_LA : 'hello', ADDRESS2 : 'bye', CONDITION : 'GOOD', PROP_CITY : 'OMAHA', })
+        const parcel = { ADDRESS_LA: 'hello', ADDRESS2: 'bye', CONDITION: 'GOOD', PROP_CITY: 'OMAHA', };
+        const actual= parcelsParser.includeInLowCondition(parcel)
         expect(actual).toBe(false);
     });
 })
