@@ -51,9 +51,9 @@ describe('includeInLowCondition test', () => {
 })
 
 describe('includeInOutOfOmaha test', () => {
-    test('if owner is outside of Omaha', () => {
-        const parcel = { OWNER_CITY: 'ATLANTA', OWNER_STAT: 'GEORGIA', PROP_CITY: 'OMAHA', };
+    test('if owner is outside of Omaha but in Nebraska', () => {
+        const parcel = { OWNER_CITY: 'LINCOLN', OWNER_STAT: 'NE', PROP_CITY: 'OMAHA', };
         const actual = parcelsParser.includeInOutOfOmaha(parcel)
-        expect(actual).toBe(false);
+        expect(actual).toBe(true);
     });
 })
