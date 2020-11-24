@@ -1,3 +1,4 @@
+const { exception } = require('react-ga');
 const parcelsParser = require('../server/parcels-parser');
 
 describe('isOwnersProperty test', () => {
@@ -56,4 +57,31 @@ describe('includeInOutOfOmaha test', () => {
         const actual = parcelsParser.includeInOutOfOmaha(parcel)
         expect(actual).toBe(true);
     });
+
+    test('if owner is inside of Omaha but outside Nebraska', () => {
+        const parcel = { OWNER_CITY: 'OMAHA', OWNER_STAT: 'GA', PROP_CITY: 'OMAHA', };
+        const actual = parcelsParser.includeInOutOfOmaha(parcel)
+        expect(actual).toBe(false);
+    })
+
+    test('if owner is inside of Omaha and in Nebraska', () => {
+        const parcel = { OWNER_CITY: 'OMAHA', OWNER_STAT: 'NE', PROP_CITY: 'OMAHA', };
+        const actual = parcelsParser.includeInOutOfOmaha(parcel)
+        expect(actual).toBe(false); 
+    })
+
+    test('if owner is outside of Omaha and outside Nebraska', () => {
+        const parcel = { OWNER_CITY: 'BATON ROUGE', OWNER_STAT: 'LA', PROP_CITY: 'OMAHA',};
+        const actual = parcelsParser.includeInOutOfOmaha(parcel)
+        expect(actual).toBe(false); 
+    })
 })
+
+describe('ownerOutOfState test', () => {
+    test('owner out of Omaha and Nebraska', () => {
+        const parcel = { OWNER_CITY: 'JACKSON', OWNER_STAT: 'MS', PROP_CITY: 'OMAHA',};
+        const actual = parcelsParser.ownerOutOfState(parcel)
+        expect(actual).toBe(true); 
+    })
+})
+

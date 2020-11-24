@@ -96,4 +96,4 @@ const writeParcelsFile = (fileName, parcels) => {
     return fse.writeJSON(fileName, parcels);
 }
 
-module.exports = {parseAndWriteFiles, isOwnersProperty, includeInLowCondition, includeInOutOfOmaha  }
+module.exports = {parseAndWriteFiles, isOwnersProperty, includeInLowCondition, includeInOutOfOmaha, ownerOutOfState }
