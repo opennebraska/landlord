@@ -1,18 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ReactGA from 'react-ga';
 import "./App.css";
 import MainRouter from "./MainRouter";
 
+ReactGA.initialize('UA-175185008-1');
+
 function App() {
 
-    useEffect(() => {
-        ReactGA.initialize('UA-175185008-1');
-    })
-  return (
-    <React.Fragment>
-      <MainRouter />
-    </React.Fragment>
-  );
+    return (
+        <React.Fragment>
+            <MainRouter/>
+        </React.Fragment>
+    );
 }
 
 export default App;
