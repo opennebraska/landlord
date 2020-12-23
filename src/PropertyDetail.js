@@ -9,6 +9,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import ReactGA from "react-ga";
 import PropTypes from "prop-types";
 import ViolationDetail from "./ViolationDetail";
+import {Grid} from "@material-ui/core";
 
 export default function PropertyDetail(props) {
   const [selectedProperty, setSelectedProperty] = useState({QUALITY: "", CONDITION: ""});
@@ -58,7 +59,9 @@ export default function PropertyDetail(props) {
               {violationLinks.length > 0 && violationLinks.map(link => <Typography key={link} variant={"body"} component={"p"} gutterBottom><Link target="_blank" rel="noreferrer" href={`${link}`}>View Case</Link></Typography>)}
               {violationLinks.length === 0 && <Typography variant={"body1"} component={"p"}>No Cases</Typography>}
               {violations.length > 0 && <Typography variant={"h4"} gutterBottom>Violations</Typography>}
+              <Grid container>
               {violations.length > 0 && violations.map((violation, index) => <ViolationDetail key={index} violation={violation}/>)}
+              </Grid>
             </Box>
           </CardContent>
         </Card>

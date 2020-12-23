@@ -1,10 +1,9 @@
 import React, {useEffect} from "react";
 import ReactGA from "react-ga";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
-import {CardContent} from "@material-ui/core";
+import {CardContent, Grid} from "@material-ui/core";
 
 export default function ViolationDetail({violation}) {
     useEffect(() => {
@@ -22,13 +21,13 @@ export default function ViolationDetail({violation}) {
     } = violation;
 
     const styles = {
-        container: {padding: 5, marginBottom: 10}
+        card: {minWidth: 500, flexGrow: 1, margin: 5}
     }
 
     return (
-        <Card style={styles.container}>
-            <CardContent>
-                <Box sb={12} mb={3}>
+        <Grid container item md={12} lg={6}>
+            <Card style={styles.card}>
+                <CardContent>
                     {violationStatus &&
                     <Typography variant={"body1"} gutterBottom><b>Status: </b>{violationStatus}</Typography>}
                     {violationDate &&
@@ -55,9 +54,9 @@ export default function ViolationDetail({violation}) {
                     <Typography variant={"body1"} component={"p"}><b>Severity
                         Level: </b>{violationSeverityLevel}
                     </Typography>}
-                </Box>
-            </CardContent>
-        </Card>
+                </CardContent>
+            </Card>
+        </Grid>
     )
 
 }
