@@ -8,12 +8,14 @@ import Box from '@material-ui/core/Box';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import ReactGA from "react-ga";
 import PropTypes from "prop-types";
+import ViolationDetail from "./ViolationDetail";
 
 export default function PropertyDetail(props) {
   const [selectedProperty, setSelectedProperty] = useState({QUALITY: "", CONDITION: ""});
   const [propertyCount, setPropertyCount] = useState(0);
   const [encodedPropertyAddress, setEncodedPropertyAddress] = useState("");
   const [violationLinks, setViolationLinks] = useState([]);
+  const [violations, setViolations] = useState([]);
 
   const {pin} = useParams();
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function PropertyDetail(props) {
     setPropertyCount(parcelData.filter(propJson => propJson.OWNER_NAME === property.OWNER_NAME).length);
     setEncodedPropertyAddress(encodeURIComponent(`${property.ADDRESS_LA}, ${property.PROP_CITY}, NE ${property.PROP_ZIP}`));
     setViolationLinks(property.VIOLATION_LINKS || []);
+    setViolations(property.VIOLATIONS || []);
   }, [pin]);
 
   return (
@@ -54,6 +57,8 @@ export default function PropertyDetail(props) {
               <Typography variant={"h6"} gutterBottom>Case Links:</Typography>
               {violationLinks.length > 0 && violationLinks.map(link => <Typography key={link} variant={"body"} component={"p"} gutterBottom><Link target="_blank" rel="noreferrer" href={`${link}`}>View Case</Link></Typography>)}
               {violationLinks.length === 0 && <Typography variant={"body1"} component={"p"}>No Cases</Typography>}
+              {violations.length > 0 && <Typography variant={"h4"} gutterBottom>Violations</Typography>}
+              {violations.length > 0 && violations.map((violation, index) => <ViolationDetail key={index} violation={violation}/>)}
             </Box>
           </CardContent>
         </Card>
