@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ParcelTable from "./ParcelTable";
-import ParcelMap from "./ParcelMap";
+import ParcelMap from "./map/ParcelMap";
 import React from "react";
 import {outOfStateTableData} from "./OutOfStateTableData"
 import {outOfCityTableData} from "./OutOfCityTableData";
