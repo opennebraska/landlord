@@ -7,6 +7,7 @@ export const outOfStateTableData = {
     COLUMNS["PIN"],
     COLUMNS["OWNER_NAME"],
     COLUMNS["ADDRESS2"],
+    COLUMNS["ZIP_CODE"],
     COLUMNS["OWNER_STAT"],
     COLUMNS["ADDRESS_LA"],
     COLUMNS["PROP_CITY"],
