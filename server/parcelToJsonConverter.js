@@ -31,7 +31,9 @@ const convertToPostgresInsert = (parcelsArray) => {
       dcaaccType: parcel.DCAACCTYPE,
       class: parcel.CLASS,
       quality: parcel.QUALITY,
-      condition: parcel.CONDITION
+      condition: parcel.CONDITION,
+      violationCount: parcel.VIOLATION_COUNT,
+      openViolationCount: parcel.VIOLATIONS.filter((violation) => violation && violation.violationStatus? violation.violationStatus === "Open": false).length,
     }
 
     // const insertStatement = `insert into property ("time", ${Object.keys(postgresParcelJson).map(value=> `"${value}"`)}) values (NOW(), ${Object.values(postgresParcelJson).map(value => `'${value && value.toString().trim()||''}'`)})\n`
