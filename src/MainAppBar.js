@@ -211,10 +211,10 @@ export default function MainAppBar(props) {
               <Typography variant="body2" component="p">Learn more about this project:</Typography>
               <Box display="flex" justifyContent="center">
                 <Box m={1} p={1}>
-                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://openne.slack.com/messages/housing"><Icon icon={slackIcon} width="36" height="36"/></a>
+                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://codefornebraska.slack.com/messages/housing"><Icon icon={slackIcon} width="36" height="36"/></a>
                 </Box>
                 <Box m={1} p={1}>
-                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://github.com/opennebraska/landlord"><Icon icon={githubIcon} width="36" height="36"/></a>
+                  <a className={classes.footerLink} rel="noreferrer" target="_blank" href="https://github.com/codefornebraska/landlord"><Icon icon={githubIcon} width="36" height="36"/></a>
                 </Box>
               </Box>
             </div>

@@ -13,8 +13,8 @@ export function About() {
         <Typography>
             Landlords of Omaha displays searchable data from the{' '}
             <a href={"https://data-dogis.opendata.arcgis.com/datasets/parcels"} target="_blank" rel="nopener noreferrer">Omaha/Douglas County GIS parcels dataset</a>
-            {' '}and was created by volunteers from Open/Nebraska with input from
-            {' '}<a href={"https://www.prineb.org/"} target="_blank" rel="nopener noreferrer">Policy Research & Innovation</a>.
+            {' '}and was created by volunteers from <a href={"https://codefornebraska.org"} target="_blank" rel="nopener noreferrer">Code for Nebraska</a>
+            {' '}with input from <a href={"https://www.prineb.org/"} target="_blank" rel="nopener noreferrer">Policy Research & Innovation</a>.
             There are three options for what you see on this website, which you can see by clicking on the three
             little bars in the upper left hand corner.
         </Typography>
