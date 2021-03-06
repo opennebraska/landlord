@@ -55,7 +55,6 @@ export default function PropertyDetail(props) {
                 <Typography variant={"body1"} component={"p"} gutterBottom><Link href={`/landlord/${props.source}?search=${encodeURIComponent(selectedProperty.OWNER_NAME)}`}>{`View All ${propertyCount} Properties`}</Link></Typography>
               </Grid>
               <Grid item xs={12} md={12}>
-                <Typography variant={"h4"} gutterBottom>Violations</Typography>
                 <ViolationDetail violations={violations}/>
               </Grid>
             </Grid>

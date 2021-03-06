@@ -11,7 +11,7 @@ export default function ViolationDetail({violations}) {
 
   return (
       <MaterialTable
-          title={""}
+          title={"Violations"}
           options={{
             pageSize: 10,
             pageSizeOptions: [10, 20, 50],
