@@ -29,7 +29,6 @@ const convertToPostgresInsert = (parcelsArray) => {
       legal3: parcel.LEGAL3,
       legal4: parcel.LEGAL4,
       dcaaccType: parcel.DCAACCTYPE,
-      class: parcel.CLASS,
       quality: parcel.QUALITY,
       condition: parcel.CONDITION,
       violationCount: parcel.VIOLATION_COUNT,

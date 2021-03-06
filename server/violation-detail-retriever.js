@@ -20,6 +20,7 @@ const getViolationBatch = async (links) => {
     const violationDetails = {};
     for (const violation of links) {
         if (violation.Link) {
+            console.log(`Retrieving violation details on ${violation.Link}`)
             const violationDetail = await getViolationData(violation.Link);
             if (violationDetails[violation.PIN]) {
                 violationDetails[violation.PIN] = [...violationDetails[violation.PIN], ...violationDetail];
@@ -35,7 +36,7 @@ const getViolationBatch = async (links) => {
 const getViolationData = async (link) => {
     try {
         const {data: soup} = await axios.get(link);
-        return scrapePageBetter(soup);
+        return scrapePageBetter(soup, link);
     } catch (e) {
         console.log(e);
     }
@@ -57,7 +58,7 @@ const mergeData = (data) => {
     return result;
 }
 
-const scrapePageBetter = (soup) => {
+const scrapePageBetter = (soup, link) => {
     let $ = cheerio.load(soup);
     const table = $('tr#trASITList');
     let violationsArray = [];
@@ -79,7 +80,8 @@ const scrapePageBetter = (soup) => {
                 violationSectionTitle,
                 specificViolation,
                 violationSeverityLevel,
-                photoIdNo
+                photoIdNo,
+                link
             });
         } else if (details.length === 8) {
             const violationStatus = $(details[0]).text()
@@ -98,7 +100,8 @@ const scrapePageBetter = (soup) => {
                 direction,
                 floor,
                 violationSeverityLevel,
-                photoIdNo
+                photoIdNo,
+                link
             });
         } else if (details.length === 9) {
             const violationStatus = $(details[0]).text();
@@ -119,7 +122,8 @@ const scrapePageBetter = (soup) => {
                 direction,
                 floor,
                 violationSeverityLevel,
-                photoIdNo
+                photoIdNo,
+                link
             });
         } else if (details.length === 10) {
             const violationStatus = $(details[0]).text();
@@ -142,7 +146,8 @@ const scrapePageBetter = (soup) => {
                 floor,
                 location,
                 violationSeverityLevel,
-                photoIdNo
+                photoIdNo,
+                link
             });
         }
     })

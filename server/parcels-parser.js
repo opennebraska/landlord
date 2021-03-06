@@ -10,22 +10,22 @@ const isOwnersProperty = (parcel) => {
 const includeInLowCondition = (parcel) => {
     const lowConditions = ["LOW", "WORN OUT", "POOR"];
     const parcelCondition = parcel["CONDITION"];
-    const hasLowCondition = lowConditions.includes(parcelCondition.toUpperCase());
+    const hasLowCondition = lowConditions.includes(parcelCondition ? parcelCondition.toUpperCase() : "NOT FOUND");
     const notOwnersProperty = !isOwnersProperty(parcel);
-    const propertyInsideOmaha = parcel.PROP_CITY.toUpperCase() === "OMAHA";
+    const propertyInsideOmaha = (parcel.PROP_CITY ? parcel.PROP_CITY.toUpperCase() : "") === "OMAHA";
     return hasLowCondition && notOwnersProperty && propertyInsideOmaha;
 }
 
 const includeInOutOfOmaha = (parcel) => {
-    const ownerOutsideOmaha = parcel.OWNER_CITY.toUpperCase() !== "OMAHA";
-    const ownerFromNebraska = parcel.OWNER_STAT.toUpperCase() === "NE";
-    const propertyInsideOmaha = parcel.PROP_CITY.toUpperCase() === "OMAHA";
+    const ownerOutsideOmaha = (parcel.OWNER_CITY ? parcel.OWNER_CITY.toUpperCase() : "") !== "OMAHA";
+    const ownerFromNebraska = (parcel.OWNER_STAT ? parcel.OWNER_STAT.toUpperCase() : "") === "NE";
+    const propertyInsideOmaha = (parcel.PROP_CITY ? parcel.PROP_CITY.toUpperCase() : "") === "OMAHA";
     return ownerOutsideOmaha && ownerFromNebraska && propertyInsideOmaha;
 }
 
 const ownerOutOfState = (parcel) => {
-    const ownerFromNebraska = parcel.OWNER_STAT.toUpperCase() === "NE";
-    const propertyInsideOmaha = parcel.PROP_CITY.toUpperCase() === "OMAHA";
+    const ownerFromNebraska = (parcel.OWNER_STAT ? parcel.OWNER_STAT.toUpperCase() : "") === "NE";
+    const propertyInsideOmaha = (parcel.PROP_CITY ? parcel.PROP_CITY.toUpperCase() : "") === "OMAHA";
     return !ownerFromNebraska && propertyInsideOmaha;
 }
 
@@ -41,8 +41,8 @@ async function parseAndWriteFiles(parcels, violations, violationDetails) {
 
     parcels.forEach((parcel) => {
         parcel.VIOLATION_LINKS = violations.filter(violations => violations.PIN === parcel.PIN).map(violations => violations.Link);
-        parcel.VIOLATION_COUNT = parcel.VIOLATION_LINKS.length;
         parcel.VIOLATIONS = violationDetails[parcel.PIN] || [];
+        parcel.VIOLATION_COUNT = parcel.VIOLATIONS.length;
         if (parcel.ADDRESS1 && parcel.ADDRESS1.trim()) {
             parcel.ADDRESS2 = `${parcel.ADDRESS1}, ${parcel.ADDRESS2}`;
         }
