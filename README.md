@@ -1,6 +1,6 @@
 Web UI visualizing Douglas County Nebraska Parcels database.
 
-http://opennebraska.github.io/landlord/
+http://codefornebraska.github.io/landlord/
 
 Questions about this project can be directed to Jack Dunn <jack@prineb.org> ([Policy, Research & Innovation](http://prineb.org))
 
