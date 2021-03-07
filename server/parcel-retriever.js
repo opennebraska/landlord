@@ -15,7 +15,7 @@ const getParcelsUrl = (resultOffset, resultRecordCount) => `https://gis.dogis.or
 
 async function getParcels(page, pageSize) {
     const pageUrl = getParcelsUrl(page, pageSize);
-    console.log(`Fetching data from  ${pageUrl}`);
+    //console.log(`Fetching data from  ${pageUrl}`);
     const parcelsFeaturesResponse = await axios.get(pageUrl);
     const parcelsFeatures = parcelsFeaturesResponse.data;
     return parcelsFeatures.features;

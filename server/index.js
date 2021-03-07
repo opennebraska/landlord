@@ -5,8 +5,11 @@ const parcelsParser = require('./parcels-parser')
 
 const buildFiles = async () => {
     const parcelsRetrieved = await parcelRetriever.retrieveParcels();
+    console.log('Finished parcelRetriever.retrieveParcels()')
     const violationsRetrieved = await violationsRetriever.retrieveData();
+    console.log('Finished violationsRetriever.retrieveData()')
     const violationDetails = await violationDetailRetriever.retrieveData(violationsRetrieved);
+    console.log('Finished violationDetailRetriever.retrieveData(violationsRetrieved)')
     await parcelsParser.parseAndWriteFiles(parcelsRetrieved, violationsRetrieved, violationDetails);
 }
 

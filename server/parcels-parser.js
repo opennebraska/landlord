@@ -30,6 +30,7 @@ const ownerOutOfState = (parcel) => {
 }
 
 async function parseAndWriteFiles(parcels, violations, violationDetails) {
+    console.log("Start parseAndWriteFiles");
     let ownerOutOfNebraskaParcels = [];
     let ownerOutOfNebraskaGroupingCounts = {};
 
@@ -85,12 +86,25 @@ async function parseAndWriteFiles(parcels, violations, violationDetails) {
     });
 
     await fse.ensureDir('./src/data/');
+    console.log("Finished fse.ensureDir('./src/data/')");
+
     await writeParcelsFile('./src/data/ownerOutOfNebraskaParcels.json', ownerOutOfNebraskaParcels);
+    console.log("Finished writeParcelsFile('./src/data/ownerOutOfNebraskaParcels.json', ownerOutOfNebraskaParcels)");
+
     await writeParcelsFile('./src/data/ownerOutOfNebraskaGrouping.json', ownerOutOfNebraskaGrouping);
+    console.log("Finished writeParcelsFile('./src/data/ownerOutOfNebraskaGrouping.json', ownerOutOfNebraskaGrouping)");
+
     await writeParcelsFile('./src/data/ownerInNebraskaOutOfOmahaParcels.json', ownerInNebraskaOutOfOmahaParcels);
+    console.log("Finished writeParcelsFile('./src/data/ownerInNebraskaOutOfOmahaParcels.json', ownerInNebraskaOutOfOmahaParcels)");
+
     await writeParcelsFile('./src/data/ownerInNebraskaOutOfOmahaGrouping.json', ownerInNebraskaOutOfOmahaGrouping);
+    console.log("Finished writeParcelsFile('./src/data/ownerInNebraskaOutOfOmahaGrouping.json', ownerInNebraskaOutOfOmahaGrouping)");
+
     await writeParcelsFile('./src/data/lowPoorWornOutConditionParcels.json', lowPoorWornOutConditionParcels);
+    console.log("Finished writeParcelsFile('./src/data/lowPoorWornOutConditionParcels.json', lowPoorWornOutConditionParcels)");
+
     await writeParcelsFile('./src/data/lowPoorWornOutConditionGrouping.json', lowPoorWornOutConditionGrouping);
+    console.log("Finished writeParcelsFile('./src/data/lowPoorWornOutConditionGrouping.json', lowPoorWornOutConditionGrouping)");
 }
 
 const writeParcelsFile = (fileName, parcels) => {

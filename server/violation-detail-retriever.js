@@ -20,7 +20,7 @@ const getViolationBatch = async (links) => {
     const violationDetails = {};
     for (const violation of links) {
         if (violation.Link) {
-            console.log(`Retrieving violation details on ${violation.Link}`)
+            // console.log(`Retrieving violation details on ${violation.Link}`)
             const violationDetail = await getViolationData(violation.Link);
             if (violationDetails[violation.PIN]) {
                 violationDetails[violation.PIN] = [...violationDetails[violation.PIN], ...violationDetail];
