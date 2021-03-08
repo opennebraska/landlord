@@ -10,10 +10,6 @@ function App() {
 
     return (
         <React.Fragment>
-            <Helmet>
-              <title>Landlords of Omaha</title>
-              <meta name="description" content="Property information and housing code violations for rental properties in Omaha and Douglas County"/>
-            </Helmet>
             <MainRouter/>
         </React.Fragment>
     );
