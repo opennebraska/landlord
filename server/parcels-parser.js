@@ -42,7 +42,7 @@ async function parseAndWriteFiles(parcels, violations, violationDetails) {
 
     parcels.forEach((parcel) => {
         parcel.VIOLATION_LINKS = violations.filter(violations => violations.PIN === parcel.PIN).map(violations => violations.Link);
-        parcel.VIOLATIONS = violationDetails[parcel.PIN] || [];
+        parcel.VIOLATIONS = (violationDetails[parcel.PIN] || []).filter(violation => violation);
         parcel.VIOLATION_COUNT = parcel.VIOLATIONS.length;
         if (parcel.ADDRESS1 && parcel.ADDRESS1.trim()) {
             parcel.ADDRESS2 = `${parcel.ADDRESS1}, ${parcel.ADDRESS2}`;
