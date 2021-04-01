@@ -25,7 +25,7 @@ export default function PropertyDetail(props) {
     setSelectedProperty(property);
     setPropertyCount(parcelData.filter(propJson => propJson.OWNER_NAME === property.OWNER_NAME).length);
     setEncodedPropertyAddress(encodeURIComponent(`${property.ADDRESS_LA}, ${property.PROP_CITY}, NE ${property.PROP_ZIP}`));
-    setViolations(property.VIOLATIONS || []);
+    setViolations(property.VIOLATIONS.filter(violation => violation) || []);
   }, [pin]);
 
   return (
