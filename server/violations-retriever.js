@@ -15,11 +15,7 @@ async function getParcels(page, pageSize) {
     const pageUrl = getParcelsUrl(page, pageSize);
     const parcelsFeaturesResponse = await axios.get(pageUrl);
     const parcelsFeatures = parcelsFeaturesResponse.data;
-    return parcelsFeatures.features.filter(parcelFeature => {
-        // Replace the context root as the dogis site is pointing to an old violations link at omahapermits
-        parcelFeature.attributes.Link = parcelFeature.attributes.Link.replace('permitinfo', 'PermitInfo2020')
-        return parcelFeature;
-    });
+    return parcelsFeatures.features;
 }
 
 async function makeDataRequests(count, pageSize) {
