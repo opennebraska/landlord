@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/landlord/static/css/main.4dba6daa.chunk.css",
+    "main.js": "/landlord/static/js/main.f973d643.chunk.js",
+    "main.js.map": "/landlord/static/js/main.f973d643.chunk.js.map",
+    "runtime-main.js": "/landlord/static/js/runtime-main.639bf335.js",
+    "runtime-main.js.map": "/landlord/static/js/runtime-main.639bf335.js.map",
+    "static/js/2.580e53d8.chunk.js": "/landlord/static/js/2.580e53d8.chunk.js",
+    "static/js/2.580e53d8.chunk.js.map": "/landlord/static/js/2.580e53d8.chunk.js.map",
+    "static/js/3.f07dda23.chunk.js": "/landlord/static/js/3.f07dda23.chunk.js",
+    "static/js/3.f07dda23.chunk.js.map": "/landlord/static/js/3.f07dda23.chunk.js.map",
+    "static/js/4.c93552fb.chunk.js": "/landlord/static/js/4.c93552fb.chunk.js",
+    "static/js/4.c93552fb.chunk.js.map": "/landlord/static/js/4.c93552fb.chunk.js.map",
+    "static/js/5.8bedcbc2.chunk.js": "/landlord/static/js/5.8bedcbc2.chunk.js",
+    "static/js/5.8bedcbc2.chunk.js.map": "/landlord/static/js/5.8bedcbc2.chunk.js.map",
+    "index.html": "/landlord/index.html",
+    "static/css/main.4dba6daa.chunk.css.map": "/landlord/static/css/main.4dba6daa.chunk.css.map",
+    "static/js/2.580e53d8.chunk.js.LICENSE.txt": "/landlord/static/js/2.580e53d8.chunk.js.LICENSE.txt",
+    "static/js/3.f07dda23.chunk.js.LICENSE.txt": "/landlord/static/js/3.f07dda23.chunk.js.LICENSE.txt",
+    "static/js/4.c93552fb.chunk.js.LICENSE.txt": "/landlord/static/js/4.c93552fb.chunk.js.LICENSE.txt",
+    "static/js/5.8bedcbc2.chunk.js.LICENSE.txt": "/landlord/static/js/5.8bedcbc2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.639bf335.js",
+    "static/js/2.580e53d8.chunk.js",
+    "static/css/main.4dba6daa.chunk.css",
+    "static/js/main.f973d643.chunk.js"
+  ]
+}
